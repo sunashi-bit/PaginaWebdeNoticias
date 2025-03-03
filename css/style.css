@@ -228,7 +228,7 @@ label:hover{
 	font-size: 16px;
 	padding: 5px;
 	height: 30px;
-	-webkit-appearance:textfield;
+	webkit-appearance:textfield;
 	display:none;
 }
 .page-search-field-label{
@@ -439,7 +439,7 @@ h1{
 	white-space: nowrap;
 
 }
-.image-block{
+.k{
 	position: relative;
 }
 .label-block{

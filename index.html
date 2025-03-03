@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+	
 <head>
 	<meta charset="UTF-8">
-	<title>CNN</title>
+	<title>Exclusivas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
@@ -10,292 +11,507 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body  style="overflow-x: hidden;"> 
-	<header class="page-header">
-		<div class="wrapper topnav" id="myTopnav">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo y Navbar Fijo</title>
+    <style>
+        /* Estilos generales */
+        body {
+			background-color: white; /* Fondo claro por defecto */
+            color: black; /* Texto oscuro por defecto */
+            transition: background-color 0.3s, color 0.3s; /* Transición suave */
+            margin: 0;
+            font-family: Arial, sans-serif;
 			
-			<div class="page-logo">
-				<a href="">
-				<img src="img/logo_cnn.png" alt="Page Logo">
-				</a>
-			</div>
-			<div class="header-left">
-			<nav class="page-nav">
-			  <ul>
-				<li><a href="">Regiones</a></li>
-				<li><a href="">U.S. Politicas</a></li>
-				<li><a href="">Dinero</a></li>
-				<li><a href="">Entretenimiento</a></li>
-				<li><a href="">Tecnología</a></li>
-				<li><a href="">Deporte</a></li>
-				<li><a href="">Viaje</a></li>
-				<li><a href="">Estilo</a></li>
-				<li><a href="">Salud</a></li>
-				<li><a href="">Video</a></li>
-				
-			  </ul>
-			</nav>
-		  </div><!--header-left-->
-			<div class="header-right">
-				<div class="international-edition" id="edition">
-					<input type="checkbox" id="international-switcher" hidden>
-					<label for="international-switcher">International Edition +</label>
-					<div class="international-block">
-						<ul>
-							<li>U.S.</li>
-							<li>Español</li>
-						</ul>
-						<hr>
-						<p>Selecione el idioma:</p>
-						<div class="row-block flex-block">
-						  <input type="radio" id="us-id" name="c-group">
-						  <label for="us-id">U.S.</label>
-						  <input type="radio" id="inter-id" name="c-group" checked>
-						  <label for="inter-id">International</label>
-						</div>
-						<div class="row-block flex-block">
-						  <button class="confirm">Confirmar</button>
-						</div>
-					</div><!--international-block-->
-				</div><!--international-edition-->
-				<div class="page-search" id="psearch">
-					<input type="checkbox" id="search-switcher" hidden>
-					<input type="search" placeholder="Search CNN..." class="page-search-field" id="page-search-field-id">
-					<label for="page-search-field-id" class="page-search-field-label">Search >></label>
-					<label for="search-switcher" class="search-switcher-label"><i class="fas fa-search"></i></label>
-				</div>
-				<div class="header-expanded-menu">
-					<input type="checkbox" id="expanded-switcher" hidden>
-					<label for="expanded-switcher"><i class="fas fa-bars"></i></label>
-					<div class="header-expanded-menu-block">
-						<div class="wrapper">
-						<div class="expanded-top-block">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Regiones</h3>
-											<ul>
-												<li><a href="">U.S</a></li>
-												<li><a href="">Africa</a></li>
-												<li><a href="">América</a></li>
-												<li><a href="">Asia</a></li>
-												<li><a href="">China</a></li>
-												<li><a href="">Europa</a></li>
-												<li><a href="">Oriente Medio</a></li>
-												<li><a href="">Opciones</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>U.S. Politicas</h3>
-											<ul>
-												<li><a href="">45</a></li>
-												<li><a href="">Congresos</a></li>
-												<li><a href="">Seguridad</a></li>
-												<li><a href="">The Nine</a></li>
-												<li><a href="">Trumpmerica</a></li>
-												<li><a href="">Estado</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Dinero</h3>
-											<ul>
-												<li><a href="">Negocio</a></li>
-												<li><a href="">Mercados</a></li>
-												<li><a href="">Salud</a></li>
-												<li><a href="">Lujo</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Entretenimiento</h3>
-											<ul>
-												<li><a href="">Estrellas</a></li>
-												<li><a href="">Pantalla</a></li>
-												<li><a href="">Borrachera</a></li>
-												<li><a href="">Cultura</a></li>
-												<li><a href="">Media</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Tecnología</h3>
-											<ul>
-												<li><a href="">Negocio</a></li>
-												<li><a href="">Cultura</a></li>
-												<li><a href="">Artilugio</a></li>
-												<li><a href="">Futuro</a></li>
-												<li><a href="">Inauguración</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Deportes</h3>
-											<ul>
-												<li><a href="">Fútbol americano</a></li>
-												<li><a href="">Golf</a></li>
-												<li><a href="">Tennis</a></li>
-												<li><a href="">Motorsport</a></li>
-												<li><a href="">Las carreras de caballos</a></li>
-												
-											</ul>
-										</div>
-									</div>
-								</div><!--row-->
-								<div class="row">
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Viaje</h3>
-											<ul>
-												<li><a href="">Aviación</a></li>
-												<li><a href="">Viajero de negocios</a></li>
-												<li><a href="">Destinos</a></li>
-												<li><a href="">Características</a></li>
-												<li><a href="">Comida / bebida</a></li>
-												<li><a href="">Hoteles</a></li>
-												<li><a href="">Hoteles asociados</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Estilo</h3>
-											<ul>
-												<li><a href="">Moda</a></li>
-												<li><a href="">Diseño</a></li>
-												<li><a href="">Arquitectura</a></li>
-												<li><a href="">Letras</a></li>
-												<li><a href="">Autos</a></li>
-												<li><a href="">Lujo</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Salud</h3>
-											<ul>
-												<li><a href="">Dieta + Fitness</a></li>
-												<li><a href="">Viviendo bien</a></li>
-												<li><a href="">Paternidad + Familia</a></li>
-												<li><a href="">Signos vitales</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Características</h3>
-											<ul>
-												<li><a href="">Proyecto Libertad</a></li>
-												<li><a href="">Impacta tu mundo</a></li>
-												<li><a href="">Dentro de Africa</a></li>
-												<li><a href="">2 grados</a></li>
-												<li><a href="">Todas las características</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Video</h3>
-											<ul>
-												<li><a href="">Video nuevos</a></li>
-												<li><a href="">Muestra de características</a></li>
-												<li><a href="">Programas de televisión</a></li>
-												<li><a href="">Horario de television</a></li>
-												<li><a href="">Rostros de CNN en todo el mundo</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-2">
-										<div class="expanded-col">
-											<h3>Mas...</h3>
-											<ul>
-												<li><a href="">Clima</a></li>
-												<li><a href="">CNN Héroes</a></li>
-												<li><a href="">CNN Perfiles</a></li>
-												<li><a href="">Liderazgo</a></li>
-												<li><a href="">Pressroom</a></li>
-												<li><a href="">Sitios asociados</a></li>
-											</ul>
-										</div>
-									</div>
-								</div><!--row-->
-							</div><!--container-fluid-->
-						</div><!--expanded-top-block-->
-						<div class="expanded-bottom-block">
-							<div class="international-block">
-							<ul>
-								<li><img src="img/logo_us.png" alt="us-logo">U.S.</li>
-								<li><img src="img/logo_esp.png" alt="logo-espanol">Español</li>
-							</ul>
-							<hr>
-							<p>Selecciona el idioma:</p>
-							<div class="row-block flex-block">
-						  	  <input type="radio" id="us-id-1" name="c-group-1">
-							  <label for="us-id-1">U.S.</label>
-						  	  <input type="radio" id="inter-id-1" name="c-group-1" checked>
-						     <label for="inter-id-1">International</label>
-						   </div>
-						<div class="row-block flex-block">
-						  <button class="confirm">Confirmar</button>
-						</div>
-					  </div><!--international-block-->
-					</div><!--expanded-bottom-block- -->
-				</div><!--wrapper-->
-		   </div><!--header-expanded-menu-block-->
-		</div><!--header-expanded-menu--->
-	</div> <!--header-right-->
+		}    
+        /* Estilos para el modo oscuro */
+        body.dark {
+            background-color: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto claro */
+        }
 
 
-	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <!--  <i class="fas fa-hamburger"></i>-->
-  	<i class="fas fa-bars"></i>
-  </a>
+        /* Cambio de color para textos específicos en modo oscuro */
+        body.dark h1,
+        body.dark h2,
+        body.dark h3,
+        body.dark p,
+        body.dark a {
+            color: #ffffff; /* Texto claro en modo oscuro */
+        }
 
-  </div>  <!--wrapper-->
-</header>
+        /* Cambio de estilo para imágenes en modo oscuro */
+        body.dark img {
+            filter: brightness(0.8); /* Reduce el brillo de las imágenes en modo oscuro */
+        }
+
+        /* Contenedor del logo */
+        .image-container {
+			position: fixed; /* Logo fijo */
+            top: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: black;
+            z-index: 1001; 
+		}
+
+        /* Estilos de la imagen del logo */
+        .image-container img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            display: inline-block; /* Permite centrar la imagen con text-align */
+        }
+
+        /* Navbar */
+        .page-header {
+            position: fixed; /* Hace que el navbar sea fijo */
+            top: 120px; /* Lo coloca debajo del logo (ajusta según la altura del logo) */
+            width: 100%; /* Ocupa todo el ancho de la página */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente (negro con 50% de opacidad) */
+            padding: 10px 20px; /* Espaciado interno */
+            z-index: 100; /* Asegura que el navbar esté por encima de otros elementos */
+            display: flex;
+            justify-content: space-between; /* Distribuye el espacio entre los elementos */
+            align-items:right; /* Centra verticalmente los elementos */
+        }
+
+        /* Logo dentro del navbar */
+        .page-logo img {
+            height: 60px; /* Altura del logo */
+        }
 
 
+        /* Enlaces del navbar */
+        .page-nav ul {
+            list-style: none; /* Quita los puntos de la lista */
+            margin: 0;
+            padding: 0;
+            display: right; /* Alinea los elementos horizontalmente */
+        }
 
+        .page-nav ul li {
+            margin: 0 10px; /* Espacio entre enlaces */
+        }
+
+        .page-nav ul li a {
+            color: white; /* Color del texto */
+            text-decoration: rgb(172, 10, 10); /* Quita el subrayado */
+            font-size: 16px;
+        }
+
+		
+        /* Espacio reservado para el navbar */
+        .navbar-space {
+            height: 60px; /* Altura del navbar */
+        }
+        /* Contenido de la página */
+        .content {
+            padding-top: 180px; /* Espacio para que el contenido no quede detrás del navbar y el logo */
+            padding:20 px;
+			
+        }
+		.theme-toggle img {
+	   width: 30px; /* Tamaño más pequeño */
+	   height: 30px; /* Tamaño más pequeño */
+   }
+
+   .theme-icon {
+	width: 40px;
+	height: 40px;
+   }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor del logo -->
+    <div class="image-container">
+        <img src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
+    </div>
+
+    <!-- Navbar -->
+    <header class="page-header">
+        <!-- Logo dentro del navbar (opcional) -->
+        <div class="page-logo">
+            <a href="">
+                <img src="img/LOGO-CUADRADO.jpg" alt="Page Logo">
+            </a>
+        </div>
+
+        <!-- Enlaces del navbar -->
+        <nav class="page-nav">
+            <ul>
+                <li><a href="">Tecnología</a></li>
+                <li><a href="">Políticas</a></li>
+                <li><a href="">Dinero</a></li>
+                <li><a href="">Innovación</a></li>
+                <li><a href="">Deporte</a></li>
+                <li><a href="">Viaje</a></li>
+                <li><a href="">Estilo</a></li>
+                <li><a href="">Salud</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botones adicionales (búsqueda, tema, etc.) -->
+        <div class="header-right">
+            <div class="page-search">
+                <input type="checkbox" id="search-switcher" hidden>
+                <input type="search" placeholder="Buscar..." class="page-search-field" id="page-search-field-id">
+                <label for="page-search-field-id" class="page-search-field-label"></label>
+                <label for="search-switcher" class="search-switcher-label"><i class="fas fa-search"></i></label>
+            </div>
+
+            <div class="theme-toggle">
+                <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Cambiar tema claro/oscuro
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        themeIcon.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            updateTheme();
+        });
+
+        function updateTheme() {
+            if (body.classList.contains('dark')) {
+                themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
+            } else {
+                themeIcon.src = '/img/icon-moon.png'; // Cambia a sol
+            }
+        }
+
+        // Inicializar el tema al cargar la página
+        updateTheme();
+    </script>
+
+
+<style>
+	/* Carrusel */
+ /* Carousel */
+ .carousel {
+            width: 70%; /* Carousel takes 70% of the width */
+            overflow: hidden;
+            position: relative;
+			margin-top: 180px; /* Espacio entre el navbar y el carrusel */
+			
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+			
+        }
+
+        .carousel img {
+            width: 100%; /* Adjust the width of the images to the container */
+            height: auto;
+			flex-shrink: 0;
+			padding-right: 10px
+			
+        }
+
+        /* Side image */
+        .side-image {
+            width: 34%; /* Side image takes 30% of the width */
+            padding-left: 20px; /* Space between carousel and side image */
+			position: center;
+			margin-top: 180px; /* Espacio entre el navbar y el carrusel */
+        }
+
+        .side-image img {
+            width: 50%; /* Make the image fill the container */
+            height: auto;
+            display: block; /* Remove extra space below the image */
+        }
+
+        /* Styles for the article */
+        .image-block img {
+            width: 80%; /* Ensure the image fills the container */
+            height: auto;
+        }
+
+      
+
+		.main-container {
+            display: flex;
+            gap: 1px; /* Espacio entre el carrusel y la imagen */
+            align-items: flex-start; /* Alinea los elementos en la parte superior */
+        }
+		
+
+	
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Main container for carousel and side image -->
+    <div class="main-container">
+        <!-- Carousel -->
+        <div class="carousel">
+            <div class="carousel-container">
+                <img src="img/noticia-1.png" alt="Image 1">
+                <img src="img/noticia-2.png" alt="Image 2">
+                <img src="img/obse.jpg" alt="Image 3">
+                <img src="img/salud.jpg" alt="Image 4">
+            </div>
+        </div>
+
+        <!-- Side image (article content) -->
+		<div class="side-image" style="order: -1;">
+            <article>
+                <div class="image-block">
+                    <a href="https://sport-ti.mx/?srsltid=AfmBOopbxEqK7OaeYJh9eL7VpD0nzrKNHil6wtUDZUaAQ-DftksLfNU8" target="_blank">
+                        <img src="img/sporti-ti.png" alt="SPORT-TI Logo">
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for the automatic carousel
+        const carouselContainer = document.querySelector('.carousel-container');
+        const images = document.querySelectorAll('.carousel img');
+        const totalImages = images.length;
+        let currentIndex = 0;
+
+        function moveToNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages; // Move to the next index
+            const offset = -currentIndex * 100; // Calculate the offset
+            carouselContainer.style.transform = `translateX(${offset}%)`; // Apply the transformation
+        }
+
+        // Change image every 3 seconds (3000 ms)
+        setInterval(moveToNextImage, 3000);
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+	<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Página con Redes Sociales</title>
+		<style>
+			#social-icons {
+	   position: fixed;
+	   bottom: 20px;
+	   right: 20px;
+	   z-index: 1000;
+	   display: flex;
+	   flex-direction: column; /* Cambia la dirección a vertical */
+	   gap: 10px; /* Espacio entre los íconos */
+   }
+
+   #social-icons img {
+	   width: 30px; /* Tamaño más pequeño */
+	   height: 30px; /* Tamaño más pequeño */
+   }
+			
+		</style>
+	</head>
+	<body>
+	
+	<div id="social-icons">
+	   
+		</a>
+		<a href="https://www.instagram.com/exclusivas_mx/" target="_blank">
+			<img src="img/icons8-instagram-logo.svg" alt="Instagram" />
+		</a>
+		<a href="https://www.facebook.com/periodicoexclusivasmx/" target="_blank">
+			<img src="img/icons8-facebook-logo.svg" alt="Facebook" />
+		</a>
+		<a href="https://www.youtube.com/@exclusivasmexico" target="_blank">
+		   <img src="img/icons8-youtube-logo.svg" alt="Youtube" />
+		<a href="https://x.com/exclusivas_mx" target="_blank">
+			<img src="img/icons8-x-logo.svg">
+		</a>
+		<a href="https://www.tiktok.com/@exclusivas_mx/" target="_blank">
+		   <img src="img/icons8-tiktok-logo.svg" alt="Tiktok" />
+	   
+	</div>
+	
+	</body>
+	</html>
+
+
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Contenedor principal */
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espacio entre las tarjetas */
+            padding: 10px;
+			margin-top: 10px; /* Espacio entre el navbar y el carrusel */
+            justify-content: center; /* Centra las tarjetas horizontalmente */
+			padding-left: 10px
+        }
+
+        /* Estilos para cada tarjeta de noticia */
+        .news-card {
+            width: 400px; /* Ancho fijo para cada tarjeta */
+            background-color: white;
+            border-radius: 8px;
+			box-shadow:rgba(0, 0, 0, 0.1);
+			width: 300px; /* Ancho específico */
+			padding: 20px;
+            height: 400px; 
+			flex-direction: column;
+			justify-content: space-between;
+            text-align: center; /* Centra el texto */
+			padding-right: 10px
+        }
+
+      .card.lista-card {
+		justify-content: flex-end;
+
+}
+
+        /* Estilos para la imagen */
+        .news-card img {
+            width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+            height: 200px; /* Altura fija para la imagen */
+            object-fit: cover; /* Ajusta la imagen para cubrir el espacio */
+        }
+
+        /* Estilos para el texto */
+        .news-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .news-card p {
+            margin: 0 15px 15px;
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Estilos para el enlace */
+        .news-card a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #b7371a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .news-card a:hover {
+            background-color: #0056b3;
+        }
+
+
+		.lista-vertical {
+			list-style-type: auto;
+			padding: 0%;
+			margin: 0%;
+			width: 100%;
+		}
+
+			.lista-vertical li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .lista-vertical li::before {
+            content: "•";
+            color: #007BFF;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+		
+    </style>
+</head>
+<body>
+
+<div class="news-container">
+<!-- Card 1: Lista Vertical -->
+<div class="card.lista-card">
+<h2>Categorías</h2>
+<ul class="lista-vertical">
+	<li>Tecnologia</li>
+	<li>Politicas</li>
+	<li>Dinero</li>
+	<li>Innovacion</li>
+	<li>Deporte</li>
+	<li>Viaje</li>
+	<li>Estilo</li>
+	<li>Salud</li>
+</ul>
+</div>
+
+<!-- Card 2: Noticias -->
+<div class="news-card">
+	<img src="img/noticia-2.png" alt="Noticia 2">
+	<h3>Propuesta Legislativa para inclusión</h3>
+	<p>Impulsan propuesta legislativa para fomentar inclusión y educación financiera con perspectiva de género.</p>
+	<a href="#">Leer más</a>
+</div>
+
+<!-- Card 3: Otra Información -->
+<div class="news-card">
+	<img src="img/noticia-2.png" alt="Noticia 2">
+	<h3>Propuesta Legislativa para Inclusión</h3>
+	<p>Impulsan propuesta legislativa para fomentar inclusión y educación financiera con perspectiva de género.</p>
+	<a href="#">Leer más</a>
+</div>
+</div>
+
+</body>
+</html>
 
 <main>
 	<div class="wrapper">
 	  <div class="container-fluid">
 		<section class="row">
-		 <div class="col-5 col-12 col-sm-7 col-md-6">
-			<h1>Buscando una línea de vida</h1>
+		 <div class="col-6 col-6 col-sm-6 col-md-6">
+			<h1>El fentanilo llega de China a México, AMLO afirma tener pruebas</h1>
 			<article>
 				<div class="image-block">
-					<img src="img/articles/article-1.jpg" alt="img1">
+					<img src="img/articles/article-1.png" alt="img1">
 					<div class="label-block">
-						<div class="image-label">Secuelas de las elecciones en el Reino Unido</div>
+						<div class="image-label">Por Exclusivas</div>
 					</div><!--label-block-->	
 				</div><!--image-block-->
-				<h3 class="bold">La primera ministra británica May ha perdido el control de su partido, el Parlamento, el manifiesto político y el Brexit</h3>
-				<ul class="last-news">
+				<h3 class="bold">La primera ministra británica May ha perdido el control de su partido, el parlamento, el manifiesto político y el Brexit</h3>
+				<class="last-news">
 					<li><a href="">Lo que significa el terremoto de las elecciones en el Reino Unido para el mundo</a></li>
-					<li class="play"><a href="">¿A dónde van los conservadores del Reino Unido desde aquí?</a></li>
-				</ul>
+					<li class="play"><a href="">Cierran la Puebla Orizaba tras volcadura de tráiler, esto sabemos del accidente</a></li>
+				</class=>
 			</article>
-		</div><!--col-5-->
-		<div class="col col-12 col-sm-5 col-md-3">
+		</div>
 			<article>
 				<div class="image-block">
-					<img src="img/articles/article-2.jpg" alt="img-2">
+					<img src="img/articles/article-3.avif" alt="img-3">
 				</div><!--image-block-->
-				<h3 class="semi-grey">Parte del motor arranca el avión de pasajeros después del despegue</h3>
-			</article>
-			<article>
-				<div class="image-block">
-					<img src="img/articles/article-3.jpg" alt="img-3">
-				</div><!--image-block-->
-				<h3 class="semi-grey">Trump rompe la boda en Nueva Jersey</h3>
+				<h3 class="semi-grey">Cuauhtémoc Blanco; es investigado por abuso sexual</h3>
 			</article>
 		</div><!--col-->
 		<div class="col col-12 col-sm-12 col-md-3">
@@ -304,16 +520,16 @@
 					Historias destacadas
 				</div>
 				<div class="image-block">
-					<img src="img/articles/article-4.jpg" alt="img-4">	
+					<img src="img/articles/article-4.JFIF" alt="-4">	
 				</div><!--image-block-->
-				<h3 class="middle-size">Macron en camino de grandes avances en las elecciones parlamentarias francesas</h3>
+				<h3 class="middle-size">Sheinbaum responde con firmeza a EEUU sobre la declaración de guerra a cárteles mexicanos: “Empiecen por su país”</h3>
 				<ul class="last-news">
 					<li><a href="">La nube rusa se asienta sobre Trump</a></li>
-					<li><a href="">Puerto Rico vota para convertirse en el estado 51 de EE. UU.</a></li>
+					<li><a href="">Puerto Rico vota para convertirse en el estado 51 </a></li>
 					<li><a href="">Arrestos mientras el ejército surcoreano realiza una caza de brujas gay</a></li>
 					<li><a href="">Si hay cintas de Comey, ¿Trump tiene que entregarlas?</a></li>
 					<li><a href="">La crisis del Golfo amenaza con separar a las familias</a></li>
-					<li><a href="">Ex fiscal de EE. UU. Se sincera sobre las llamadas de Trump</a></li>
+					<li><a href="">Ex fiscal de Santa maría Se sincera sobre las llamadas de Angel</a></li>
 				</ul>
 			</article>
 		</div><!--col-->
@@ -331,30 +547,19 @@
 				<ul class="last-news">
 					<li><a href="">Melania se muda a la Casa Blanca</a></li>
 					<li><a href="">La Casa Blanca niega que Trump retrase la visita al Reino Unido</a></li>
-					<li><a href="">Irán envía aviones llenos de comida a Qatar</a></li>
-					<li><a href="">Qatar contrata a Bush fiscal general</a></li>
+					<li><a href="">Encuentran a menor en Puebla desaparecida en Tijuana</a></li>
+					<li><a href="">Se estanca la producción de autopartes en Puebla</a></li>
 					<li><a href="">Uber cultura laboral bajo fuego</a></li>
 					<li><a href="">TV host Después del accidente: 'No estoy muerta'</a></li>
-					<li><a href="">Londres: publicadas fotos falsas de cinturones suicidas</a></li>
+					<li><a href="">Sujeto arroja piedra sobre perrito 'Huesitos' mientras dormía en Puebla</a></li>
 				</ul>
 			</article>
 	   		</div><!--col-->
-	   			<div class="col-5 col-sm-7 col-md-6 col-12">
+			   			|
 	   			 <div class="category">
-					Presentada
-				</div>
-	   			<article class="no-margin">
-				<div class="image-block">
-					<img src="img/articles/article-6.jpg" alt="img-6">
-					<div class="label-block">
-						<div class="image-label">UN AÑO DESPUÉS</div>
-						<h3 class="full-width-heading no-margin">Cómo la masacre de Pulse empujó a algunos de vuelta al armario</h3>
-					</div><!--label-block-->	
-				</div><!--image-block-->
-			</article>
 			<article class="no-margin">
 				<div class="row">
-					<div class="col-5">
+					<div class="col-6">
 						<img src="img/articles/article-7.jpg" alt="img-7">
 					</div><!--col-5-->
 					<div class="col-7">
@@ -364,24 +569,23 @@
 			</article>
 			<article class="top-border">
 				<div class="row">
-					<div class="col-5">
+					<div class="col-6">
 						<img src="img/articles/article-8.jpg" alt="img-8">
 					</div><!--col-5-->
 					<div class="col-7">
-						<h3 class="middle-size">Por qué estas son 'comidas rechazadas por todos'</h3>
+						<h3 class="middle-size">Por qué estas son comidas rechazadas por todos</h3>
 					</div><!--col-7-->
 				</div><!--row-->
 			</article>
 	   		</div><!--col-5-->
 	   		<div class="col col-sm col-md-3 col-12">
-	   			<article class="no-margin">
-	   			 <div class="category">
+				<div class="category">
 					Destacar
 				</div>
-				
+	   			<article class="no-margin">
 				<div class="row">
 					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-9.jpg" alt="img-9">
+						<img  src="img/articles/article-9.png" alt="img-9">
 					</div><!--col-5-->
 					<div class="col-9">
 						<h3 class="small-size">Sharapova se retira de la clasificación de Wimbledon</h3>
@@ -394,7 +598,7 @@
 						<img  src="img/articles/article-10.jpg" alt="img-10">
 					</div><!--col-5-->
 					<div class="col-9">
-						<h3 class="small-size">Por qué hay 47 Líbano en EE. UU.</h3>
+						<h3 class="small-size">Puebla reporta más de 800 casos de violencia familiar en enero 2025</h3>
 					</div><!--col-7-->
 				</div><!--row-->
 			</article>
@@ -409,7 +613,7 @@
 				<div class="image-block">
 					<img src="img/articles/article-11.jpg" alt="img-11">	
 				</div><!--image-block-->
-				<h3 class="middle-size">Wonder Woman 'se dispara,' The Mummy 'se tambalea</h3>
+				<h3 class="middle-size">Siguen clausuras a verificentros de Puebla; cancelan Policía Ambiental</h3>
 			 </article>
 			 <article class="no-margin top-border">
 				<div class="row">
@@ -427,7 +631,7 @@
 						<img  src="img/articles/article-13.jpg" alt="img-13">
 					</div><!--col-3-->
 					<div class="col-9">
-						<h3 class="small-size">La nueva 'cultura de la compasión' de Orlando</h3>
+						<h3 class="small-size">La nueva 'cultura de la compasión' de Chiapas</h3>
 					</div><!--col-9-->
 				</div><!--row-->
 			</article>
@@ -442,32 +646,35 @@
 				</div><!--row-->
 			</article>
 	   		</div><!--col-->
-	   		<div class="col-5 col-sm-7 col-12 col-md-6">
+	   		<div class="col-3 col-sm-7 col-3 col-md-6">
+				<div class="category">
+					Premios
+				</div>
 	   		  <article class="no-margin">
 				<div class="image-block">
 					<img src="img/articles/article-15.jpg" alt="img-15">
 					<div class="label-block">
-						<h3 class="full-width-heading no-margin with-opacity">¿Quiénes fueron las grandes ganadoras en los premios Tony?</h3>
+						<h3 class="full-width-heading no-margin with-opacity">¿Que son los premios Tony?</h3>
 					</div><!--label-block-->	
 				</div><!--image-block-->
 			</article>
 			<article class="no-margin">
 				<div class="row">
-					<div class="col-5">
+					<div class="col-3">
 						<img src="img/articles/article-16.jpg" alt="img-16">
 					</div><!--col-5-->
 					<div class="col-7">
-						<h3 class="middle-size">Explorando la isla más verde de Hong Kong</h3>
+						<h3 class="middle-size">Explorando la isla más verde del estado</h3>
 					</div><!--col-7-->
 				</div><!--row-->
 			</article>
 			<article class="top-border">
 				<div class="row">
-					<div class="col-5">
+					<div class="col-3">
 						<img src="img/articles/article-17.jpg" alt="img-17">
 					</div><!--col-5-->
 					<div class="col-7">
-						<h3 class="middle-size">Descubren fotos 'perdidas' de una tribu antigua</h3>
+						<h3 class="middle-size">Descubren fotos 'perdidas' de una <span class="dashicons dashicons-image-filter"></span></h3>
 					</div><!--col-7-->
 				</div><!--row-->
 			</article>
@@ -480,7 +687,7 @@
 				<div class="image-block">
 					<img src="img/articles/article-18.jpg" alt="img-18">	
 				</div><!--image-block-->
-				<h3 class="middle-size"><span class="bold">David A. Andelman:</span>Macron, el hombre fuerte que Europa necesita</h3>
+				<h3 class="middle-size"><span class="bold">David A. Andelman:</span>Macron, el hombre fuerte que Mexico necesita</h3>
 			 </article>
 			 <article class="no-margin top-border">
 				<div class="row">
@@ -488,7 +695,7 @@
 						<img  src="img/articles/article-19.jpg" alt="img-19">
 					</div><!--col-3-->
 					<div class="col-9">
-						<h3 class="small-size"><span class="bold">Oma Seddiq:</span>  Mi vida como estudiante en Qatar</h3>
+						<h3 class="small-size"><span class="bold">Oma Seddiq:</span>  Mi vida como estudiante en Puebla</h3>
 					</div><!--col-9-->
 				</div><!--row-->
 			</article>
@@ -498,7 +705,7 @@
 						<img  src="img/articles/article-20.jpg" alt="img-20">
 					</div><!--col-3-->
 					<div class="col-9">
-						<h3 class="small-size"><span class="bold">Laura Beers:</span>History says Theresa May must go</h3>
+						<h3 class="small-size"><span class="bold">Laura:</span>La historia de vida de Laura</h3>
 					</div><!--col-9-->
 				</div><!--row-->
 			</article>
@@ -508,7 +715,7 @@
 						<img  src="img/articles/article-21.jpg" alt="img-21">
 					</div><!--col-3-->
 					<div class="col-9">
-						<h3 class="small-size"><span class="bold">James Bloodworth:</span>El auge de la izquierda sacude la política británica</h3>
+						<h3 class="small-size"><span class="bold">James Bloodworth:</span>El auge de la izquierda sacude la política</h3>
 					</div><!--col-9-->
 				</div><!--row-->
 			</article>
@@ -527,10 +734,10 @@
 			   	 </div><!--image-block-->
 				 <h3 class="middle-size">¿Qué pasa en las 21 horas cuando las estrellas del fútbol no están entrenando?</h3>
 				 <ul class="last-news">
-					<li><a href="">La arcilla roja se vuelve 'verde' en una reforma de 400 millones de dólares</a></li>
+					<li><a href="">La arcilla roja se vuelve 'verde' en una reforma de 40 millones de dólares</a></li>
 					<li><a href="">Uvas del éxito: Buffon incursiona en el negocio del vino</a></li>
-					<li><a href="">Bryan Habana: las estrellas del rugby sorprenden al descubrimiento del ADN</a></li>
-					<li><a href="">Mario Balotelli no es problema, 'es un buen tipo'</a></li>
+					<li><a href="">Bryan Habana: las estrellas del ruby sorprenden al descubrimiento del ADN</a></li>
+					<li><a href="">Mario Balotelli no es problema, es un buen tipo</a></li>
 				 </ul>
 			   </article>
 	   		  </div><!--col-4-->
@@ -573,17 +780,17 @@
 	   			<div class="col-lg-4 col-6">
 	   			  <article>
 					 <div class="category">
-						CNN Dinero
+						Dinero
 					 </div>
 				   <div class="image-block">
 					<img src="img/articles/article-25.jpg" alt="img-25">	
 			   	   </div><!--image-block-->
 				   <h3 class="middle-size">Trump está perjudicando el turismo estadounidense</h3>
 				  <ul class="last-news">
-					<li><a href="">Australia extiende su épica carrera sin recesión</a></li>
-					<li><a href="">10 CEO mejor pagadas</a></li>
+					<li><a href="">Queretaro extiende su épica carrera sin recesión</a></li>
+					<li><a href="">Las mejores 3 cenres emjor pagadas</a></li>
 					<li><a href="">Observa cómo 350 bolas de algodón se convierten en una camisa</a></li>
-					<li><a href="">Cómo la economía de Rusia se mantiene resistente</a></li>
+					<li><a href="">Cómo la economía de Chiapas antiene resistente</a></li>
 				  </ul>
 			     </article>
 	   			</div><!--col-4-->
@@ -593,17 +800,34 @@
 					Salud
 				   </div>
 				   <div class="image-block">
-					<img src="img/articles/article-26.jpg" alt="img-26">	
+					<img src="img/salud.jpg" alt="img-26">	
 			   	   </div><!--image-block-->
 				   <h3 class="middle-size">Frutas y verduras que podrían envenenarte</h3>
 				   <ul class="last-news">
 					<li><a href="">'Sigilo': otras lo llaman agresión sexual</a></li>
-					<li><a href="">La pérdida de peso depende de cuándo, no qué, come</a></li>
-					<li><a href="">Tus hijas quieren hablar contigo sobre sexo</a></li>
+					<li><a href="">Inteligencia artificial y modelos matemáticos:</a></li>
+					<li><a href="">Futuro de la medicina personalizada contra el cánce</a></li>
 					<li><a href="">Muere un hombre después de nadar con un nuevo tatuaje</a></li>
 				   </ul>
 			     </article>
-	   			</div><!--col-4-->
+	   			</div>
+				   <div class="col-lg-4 col-6">
+					<article>
+				  <div class="category">
+				   Politica
+				  </div>
+				  <div class="image-block">
+				   <img src="img/policita.jpg" alt="img-26">	
+					 </div><!--image-block-->
+				  <h3 class="middle-size">Gobierno de Puebla analiza reubicación de caseta</h3>
+				  <ul class="last-news">
+				   <li><a href="">'Sigilo': otras lo llaman agresión sexual</a></li>
+				   <li><a href="">La pérdida de peso depende de cuándo, no qué, come</a></li>
+				   <li><a href="">426 patrullas en mal estado dejó el gobierno municipal anterior: SSC</a></li>
+				   <li><a href="">Muere un hombre después de nadar con un nuevo tatuaje</a></li>
+				  </ul>
+				</article>
+				  </div><!--c!--col-4-->
 	   		</div><!--row-->
 	   </section><!--sec4-->
 	 </div> <!--container-fluid-->
@@ -615,10 +839,11 @@
 				<div class="col-lg-9 col-12">
 				  <article class="no-margin">
 				   <div class="image-block">
-					<img src="img/articles/article-27.jpg" alt="img-27">
+					<img src="img/articles/article-27.jfif" alt="img-27">
 					<div class="label-block">
-						<div class="image-label">CNN EXCLUSIVA</div>
-						<h3 class="full-width-heading no-margin with-opacity full-width-b">Un video desgarrador muestra la guerra de Siria contra sus propios hijos</h3>
+						<div class="image-label">EXCLUSIVAS</div>
+						<h3 class="full-width-heading no-margin with-opacity full-width-b">
+							Bizarrap se une al reggaetonero Arcángel para lanzar su nueva colaboración tras el éxito con Sharika</h3>
 					</div><!--label-block-->	
 			       </div><!--image-block-->
 			      </article>
@@ -634,49 +859,51 @@
 						<div class="image-block">
 						<img src="img/articles/article-29.jpg" alt="img-29">
 			   	  		</div><!--image-block-->
-			   	  		<h3 class="middle-size">Venezuela: Cómo se perdió el paraíso</h3>
+			   	  		<h3 class="middle-size">Oaxaca: ¿Como se pierdo en el paraiso?</h3>
 					</article>
 				</div><!--col-3-->
 			</div><!--row-->
 		</div><!--wrapper-->
-	</section><!--dark-section-->
+	</section>
 </main>
 <footer class="page-footer">
    <div class="wrapper">
    	<div class="footer-top-block">
    		<div class="footer-weather">
-   			<p class="location">Londres, Reino Unido</p>
-   			<img src="img/weather-icon.png" alt="weather" height="38">
-   			<div class="temp">16°</div>
+   			<p class="location"> Cuidad de Mexico </p>			
+   			<img src="img/icons8-clima-48.png" alt="weather" height="38">
+   			<div class="temp">22°</div>
    		</div>
    				
+		 
+		
    	</div><!--footer-top-block-->
 	<div class="expanded-top-block">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-2 col-4">
 				  <div class="expanded-col">
-						<h3>Regiones</h3>
+						<h3>Estados</h3>
 						<ul>
-							<li><a href="">U.S</a></li>
-							<li><a href="">Africa</a></li>
-							<li><a href="">America</a></li>
-							<li><a href="">Asia</a></li>
-							<li><a href="">China</a></li>
-							<li><a href="">Europa</a></li>
-							<li><a href="">Oriente Medio</a></li>
+							<li><a href="">Puebla</a></li>
+							<li><a href="">Tlaxcala</a></li>
+							<li><a href="">CDMX</a></li>
+							<li><a href="">Estado de Mexico</a></li>
+							<li><a href="">Oaxaca</a></li>
+							<li><a href="">Qeretaro</a></li>
+							<li><a href="">Morelos</a></li>
 							<li><a href="">Opiniones</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-2 col-4">
 					<div class="expanded-col">
-						<h3>U.S. Politica</h3>
+						<h3>Politica</h3>
 						<ul>
 							<li><a href="">45</a></li>
 							<li><a href="">Congresos</a></li>
 							<li><a href="">Seguridad</a></li>
-							<li><a href="">The Nine</a></li>
+							<li><a href="">Noticia del día</li>
 							<li><a href="">Trumpmerica</a></li>
 							<li><a href="">Estado</a></li>
 						</ul>
@@ -762,9 +989,9 @@
 					<div class="expanded-col">
 						<h3>Salud</h3>
 						<ul>
-							<li><a href="">Dieta + Fitness</a></li>
+							<li><a href="">Dieta y Fitness</a></li>
 							<li><a href="">Viviendo bien</a></li>
-							<li><a href="">Paternidad + Familia</a></li>
+							<li><a href="">Paternidad y Familia</a></li>
 							<li><a href="">Signos vitales</a></li>
 						</ul>
 					</div>
@@ -775,8 +1002,8 @@
 						<ul>
 							<li><a href="">Proyecto Libertad</a></li>
 						    <li><a href="">Impacta tu mundo</a></li>
-							<li><a href="">Dentro de Africa</a></li>
-							<li><a href="">2 grados</a></li>
+							<li><a href="">Sobre Africa</a></li>
+							<li><a href="">Grados</a></li>
 							<li><a href="">Todas las características</a></li>
 						</ul>
 					</div>
@@ -798,8 +1025,8 @@
 						<h3>Mas...</h3>
 						<ul>
 						<li><a href="">Clima</a></li>
-						<li><a href="">CNN Héroes</a></li>
-						<li><a href="">CNN Perfiles</a></li>
+						<li><a href="">Héroes</a></li>
+						<li><a href="">Perfiles</a></li>
 						<li><a href="">Liderazgo</a></li>
 						<li><a href="">Pressroom</a></li>
 						<li><a href="">Sitios asociados</a></li>
@@ -809,53 +1036,27 @@
 			</div><!--row-->
 		</div><!--container-fluid-->
 	</div><!--expanded-top-block-->
-	<div class="footer-bottom-block">
-	 <div class="footer-bottom-left">
-	 	<img src="img/logo_cnn.png" alt="footer-cnn-logo">
-		<div class="international-edition">
-					<input type="checkbox" id="international-switcher-f" hidden>
-					<label for="international-switcher-f">Edición Internacional +</label>
-					<div class="international-block">
-						<p>Selecione el idioma:</p>
-						<div class="row-block flex-block">
-						  <input type="radio" id="us-id-3" name="c-group-3">
-						  <label for="us-id-3">U.S.</label>
-						  <input type="radio" id="inter-id-3" name="c-group-3" checked>
-						  <label for="inter-id-3">International</label>
-						</div>
-						<div class="row-block flex-block">
-						  <button class="confirm">Confirmar</button>
-						</div>
-						<hr>
-						<ul>
-							<li>U.S.</li>
-							<li>Español</li>
-						</ul>
-					</div><!--international-block-->
-		</div><!--international-edition-->
-	 </div><!--footer-bottom-left-->
+
 	 <div class="footer-bottom-right">
 	 	<div class="footer-copy">
-	 	  <p>© 2021 Red de Noticias por Cable. Turner Broadcasting System, Inc. Todos los derechos reservados.</p>
-	 	  <p>CNN Sans ™ y © 2016 Cable News Network.</p>
+	 	  <p>Copyright © 2023 Exclusivas MX All rights reserved. Developed by www.alphapro.mx</p>
+	 	  <p>Exclusivas Sans ™ y © 2016 Cable News Network.</p>
 	 	</div>
+	
 	 	<div class="footer-menu">
 	 		<ul>
 	 			<li><a href="">Condiciones de uso</a></li>
 	 			<li><a href="">Política de privacidad</a></li>
-	 			<li><a href="">Anúnciate con nosotras</a></li>
-	 			<li><a href="">Sobre nosotras</a></li>
+	 			<li><a href="">Sobre nosotros</a></li>
 	 			<li><a href="">Boletines</a></li>
-	 			<li><a href="">Trabaja para nosotras</a></li>
-	 			<li><a href="">Ayudar</a></li>
-	 			<li><a href="">Transcripciones</a></li>
-	 			<li><a href="">Metraje de la licencia</a></li>
-	 			<li><a href="">CNN Nueva fuente</a></li>
+	 			<li><a href="">Trabaja para nosotros</a></li>
+	 			<li><a href="">EXCLUSIVAS MX LA NUEVA ERA DE LA NOTICIA</a></li>
 	 		</ul>
 	 	</div><!--footer-menu-->
 	 </div><!--footer-bottom-right-->
    </div><!--wrapper-->
+   
 </footer>
-
+</body>
 </body>
 </html>
