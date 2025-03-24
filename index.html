@@ -9,128 +9,29 @@
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+	<script src="clima.js"></script>
+<script>
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', initClima);
+</script>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo y Navbar Fijo</title>
-    <style>
-        /* Estilos generales */
-        body {
-			background-color: white; /* Fondo claro por defecto */
-            color: black; /* Texto oscuro por defecto */
-            transition: background-color 0.3s, color 0.3s; /* Transición suave */
-            margin: 0;
-            font-family: Arial, sans-serif;
-			
-		}    
-        /* Estilos para el modo oscuro */
-        body.dark {
-            background-color: #121212; /* Fondo oscuro */
-            color: #ffffff; /* Texto claro */
-        }
+	<script src="datetime.js"></script>
 
-
-        /* Cambio de color para textos específicos en modo oscuro */
-        body.dark h1,
-        body.dark h2,
-        body.dark h3,
-        body.dark p,
-        body.dark a {
-            color: #ffffff; /* Texto claro en modo oscuro */
-        }
-
-        /* Cambio de estilo para imágenes en modo oscuro */
-        body.dark img {
-            filter: brightness(0.8); /* Reduce el brillo de las imágenes en modo oscuro */
-        }
-
-        /* Contenedor del logo */
-        .image-container {
-			position: fixed; /* Logo fijo */
-            top: 0;
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            background-color: black;
-            z-index: 1001; 
-		}
-
-        /* Estilos de la imagen del logo */
-        .image-container img {
-            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-            height: auto; /* Mantiene la proporción de la imagen */
-            display: inline-block; /* Permite centrar la imagen con text-align */
-        }
-
-        /* Navbar */
-        .page-header {
-            position: fixed; /* Hace que el navbar sea fijo */
-            top: 120px; /* Lo coloca debajo del logo (ajusta según la altura del logo) */
-            width: 100%; /* Ocupa todo el ancho de la página */
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente (negro con 50% de opacidad) */
-            padding: 10px 20px; /* Espaciado interno */
-            z-index: 100; /* Asegura que el navbar esté por encima de otros elementos */
-            display: flex;
-            justify-content: space-between; /* Distribuye el espacio entre los elementos */
-            align-items:right; /* Centra verticalmente los elementos */
-        }
-
-        /* Logo dentro del navbar */
-        .page-logo img {
-            height: 60px; /* Altura del logo */
-        }
-
-
-        /* Enlaces del navbar */
-        .page-nav ul {
-            list-style: none; /* Quita los puntos de la lista */
-            margin: 0;
-            padding: 0;
-            display: right; /* Alinea los elementos horizontalmente */
-        }
-
-        .page-nav ul li {
-            margin: 0 10px; /* Espacio entre enlaces */
-        }
-
-        .page-nav ul li a {
-            color: white; /* Color del texto */
-            text-decoration: rgb(172, 10, 10); /* Quita el subrayado */
-            font-size: 16px;
-        }
-
-		
-        /* Espacio reservado para el navbar */
-        .navbar-space {
-            height: 60px; /* Altura del navbar */
-        }
-        /* Contenido de la página */
-        .content {
-            padding-top: 180px; /* Espacio para que el contenido no quede detrás del navbar y el logo */
-            padding:20 px;
-			
-        }
-		.theme-toggle img {
-	   width: 30px; /* Tamaño más pequeño */
-	   height: 30px; /* Tamaño más pequeño */
-   }
-
-   .theme-icon {
-	width: 40px;
-	height: 40px;
-   }
-    </style>
-</head>
 <body>
 
     <!-- Contenedor del logo -->
+	 <head>
     <div class="image-container">
-        <img src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
+        <img id="logo" src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
     </div>
+	
 
     <!-- Navbar -->
     <header class="page-header">
@@ -140,30 +41,69 @@
                 <img src="img/LOGO-CUADRADO.jpg" alt="Page Logo">
             </a>
         </div>
+	
+		
 
         <!-- Enlaces del navbar -->
         <nav class="page-nav">
             <ul>
-                <li><a href="">Tecnología</a></li>
-                <li><a href="">Políticas</a></li>
-                <li><a href="">Dinero</a></li>
-                <li><a href="">Innovación</a></li>
-                <li><a href="">Deporte</a></li>
-                <li><a href="">Viaje</a></li>
-                <li><a href="">Estilo</a></li>
-                <li><a href="">Salud</a></li>
+				<li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tecnologia">Tecnología</a></li>
+                <li><a href="#deporte">Deporte</a></li>
+                <li><a href="#salud">Salud</a></li>
+                <li><a href="#educacion">Educación</a></li>
+                <li><a href="#espectaculos">Espectaculos</a></li>
+                <li><a href="#tendencias">Tendencias</a></li>
+                <li><a href="#social">Social</a></li>
             </ul>
         </nav>
 
+
+<script>
+	// Función para formatear la fecha y hora
+	function updateDateTime() {
+		const now = new Date(); // Obtiene la fecha y hora actual
+		const options = {
+			weekday: 'long', // Día de la semana (ej: "lunes")
+			year: 'numeric', // Año (ej: "2023")
+			month: 'long',   // Mes (ej: "octubre")
+			day: 'numeric',  // Día del mes (ej: "23")
+			hour: '2-digit', // Hora (ej: "09")
+			minute: '2-digit', // Minutos (ej: "45")
+			// second: '2-digit', // Segundos (ej: "30")
+			hour12: true // Formato de 12 horas (true) o 24 horas (false)
+		};
+		const formattedDateTime = now.toLocaleDateString('es-ES', options); // Formatea la fecha y hora
+		const capitalizedDateTime = formattedDateTime.charAt(0).toUpperCase() + formattedDateTime.slice(1); // Capitaliza la primera letra
+		document.getElementById('datetime').textContent = formattedDateTime; // Actualiza el contenido
+	}
+
+	// Actualiza la fecha y hora cada segundo
+	setInterval(updateDateTime, 1000);
+
+	// Inicializa la fecha y hora al cargar la página
+	updateDateTime();
+</script>
+
+
+
         <!-- Botones adicionales (búsqueda, tema, etc.) -->
-        <div class="header-right">
-            <div class="page-search">
+          
+	
+         <div class="header-right">
+			<div id="datetime"></div>
+            <div class="search">
                 <input type="checkbox" id="search-switcher" hidden>
-                <input type="search" placeholder="Buscar..." class="page-search-field" id="page-search-field-id">
+                <input type="search" placeholder="buscar" class="page-search-field" id="page-search-field-id">
                 <label for="page-search-field-id" class="page-search-field-label"></label>
                 <label for="search-switcher" class="search-switcher-label"><i class="fas fa-search"></i></label>
-            </div>
-
+            </div> 
+			
+			<script> document.getElementById('page-search-field-id').addEventListener('keypress', function(e) {
+				if (e.key === 'Enter') {
+					document.querySelector('.search-switcher-label').click(); // Simula un clic en el icono de búsqueda
+					
+	</script>   
             <div class="theme-toggle">
                 <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
             </div>
@@ -172,8 +112,9 @@
 
     <script>
         // Cambiar tema claro/oscuro
-        const themeIcon = document.getElementById('theme-icon');
+		const themeIcon = document.getElementById('theme-icon');
         const body = document.body;
+        const logo = document.getElementById('logo'); // Obtén el elemento del logo
 
         themeIcon.addEventListener('click', () => {
             body.classList.toggle('dark');
@@ -181,18 +122,24 @@
         });
 
         function updateTheme() {
-            if (body.classList.contains('dark')) {
-                themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
-            } else {
-                themeIcon.src = '/img/icon-moon.png'; // Cambia a sol
-            }
-        }
+            logo.style.opacity = 0; // Oculta la imagen
+            setTimeout(() => {
+                if (body.classList.contains('dark')) {
+                    themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
+                    logo.src = 'IMG/Logo-Withe-M-Exclusivas-MX.png'; // Cambia al logo oscuro
+                } else {
+                    themeIcon.src = '/img/icons8-moon-30.png'; // Cambia a sol
+                    logo.src = 'IMG/Logo-black-M-Exclusivas-MX.png'; // Cambia al logo claro
+                }
+                logo.style.opacity = 1; // Muestra la imagen
+            }) 
+		}
 
         // Inicializar el tema al cargar la página
-        updateTheme();
+        updateTheme()
     </script>
 
-
+ 
 <style>
 	/* Carrusel */
  /* Carousel */
@@ -201,7 +148,6 @@
             overflow: hidden;
             position: relative;
 			margin-top: 180px; /* Espacio entre el navbar y el carrusel */
-			
         }
 
         .carousel-container {
@@ -212,9 +158,11 @@
 
         .carousel img {
             width: 100%; /* Adjust the width of the images to the container */
-            height: auto;
+            height: 600px;
 			flex-shrink: 0;
-			padding-right: 10px
+			padding-right: 10px;
+			
+			
 			
         }
 
@@ -224,18 +172,25 @@
             padding-left: 20px; /* Space between carousel and side image */
 			position: center;
 			margin-top: 180px; /* Espacio entre el navbar y el carrusel */
-        }
+			background-size: cover;
+			position: relative;
+			
+		}
+
 
         .side-image img {
-            width: 50%; /* Make the image fill the container */
+            width: 100%; /* Make the image fill the container */
             height: auto;
             display: block; /* Remove extra space below the image */
+			
         }
 
         /* Styles for the article */
-        .image-block img {
-            width: 80%; /* Ensure the image fills the container */
-            height: auto;
+        .image-sis img {
+            width: 95%; /* Ensure the image fills the container */
+            height: 600px;
+			
+			
         }
 
       
@@ -245,33 +200,88 @@
             gap: 1px; /* Espacio entre el carrusel y la imagen */
             align-items: flex-start; /* Alinea los elementos en la parte superior */
         }
-		
 
-	
+		section {
+    background-color: #BD5946; /* Color de fondo gris claro */  
+		}
 
+    
+</style>
 
-    </style>
-</head>
 <body>
 
     <!-- Main container for carousel and side image -->
     <div class="main-container">
+		
         <!-- Carousel -->
         <div class="carousel">
             <div class="carousel-container">
-                <img src="img/noticia-1.png" alt="Image 1">
-                <img src="img/noticia-2.png" alt="Image 2">
-                <img src="img/obse.jpg" alt="Image 3">
-                <img src="img/salud.jpg" alt="Image 4">
+                <img src="img/noticia-1.png" alt="Image 1" sizes="(max-width: 600px) 400px,
+				(max-width: 1024px) 800px,
+				1200px" >
+				
+                <img src="img/noticia-2.png" alt="Image 2" sizes="(max-width: 600px) 400px,
+				(max-width: 1024px) 800px,
+				1200px">
+                <img src="img/Carrusel-1.png" alt="Image 3" sizes="(max-width: 600px) 400px,
+				(max-width: 1024px) 800px,
+				1200px">
+                <img src="img/Carrusel-2.webp" alt="Image 4" sizes="(max-width: 600px) 400px,
+				(max-width: 1024px) 800px,
+				1200px">
             </div>
         </div>
 
-        <!-- Side image (article content) -->
+		<section class="mais-lidas">
+		    <div class="mais-lida">
+			<h3>Las más leídas</h3>
+			<div class="mais-lida-noticia-single">
+			    <img src="img/policita.jpg">
+			    <div class="texto-mais-lida-single">
+				<h4>Natureza</h4>
+				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
+				<a href="/encarar-o-surf">Ver más</a>
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+			<div class="mais-lida-noticia-single">
+			    <img src="img/policita.jpg">
+			    <div class="texto-mais-lida-single">
+				<h4>Natureza</h4>
+				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
+				<a href="/encarar-o-surf">Ver más</a>
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+			<div class="mais-lida-noticia-single">
+			    <img src="img/policita.jpg">
+			    <div class="texto-mais-lida-single">
+				<h4>Natureza</h4>
+				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
+				<a href="/encarar-o-surf">Saiba Mais</a>
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+			<div class="mais-lida-noticia-single">
+			    <img src="img/policita.jpg">
+			    <div class="texto-mais-lida-single">
+				<h4>Natureza</h4>
+				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
+				<a href="/encarar-o-surf">Ver más</a>
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+		    </div><!-- div-mais-lidas -->
+        </div>
+	</section>
+
 		<div class="side-image" style="order: -1;">
             <article>
-                <div class="image-block">
+                <div class="image-sis">
                     <a href="https://sport-ti.mx/?srsltid=AfmBOopbxEqK7OaeYJh9eL7VpD0nzrKNHil6wtUDZUaAQ-DftksLfNU8" target="_blank">
-                        <img src="img/sporti-ti.png" alt="SPORT-TI Logo">
+                        <img src="img/sporti-ti.png" alt="SPORT-TI Logo" srcset="img/sporti-ti.png 400w,
+						img/sporti-ti.png 800w,
+						img/sporti-ti.png 1200w"
+				sizes="(max-width: 600px) 400px,
+					   (max-width: 1024px) 800px,
+					   1200px"
+				alt="Imagen responsiva">
                     </a>
                 </div>
             </article>
@@ -279,7 +289,7 @@
     </div>
 
     <script>
-        // JavaScript for the automatic carousel
+        
         const carouselContainer = document.querySelector('.carousel-container');
         const images = document.querySelectorAll('.carousel img');
         const totalImages = images.length;
@@ -294,7 +304,7 @@
         // Change image every 3 seconds (3000 ms)
         setInterval(moveToNextImage, 3000);
     </script>
-
+</section>
 </body>
 </html>
 <!DOCTYPE html>
@@ -315,10 +325,12 @@
    }
 
    #social-icons img {
-	   width: 30px; /* Tamaño más pequeño */
-	   height: 30px; /* Tamaño más pequeño */
+	   width: 25px; /* Tamaño más pequeño */
+	   height: 25px; /* Tamaño más pequeño */
+	   filter: brightness(1.2); /* Reduce el brillo de las imágenes en modo oscuro */
+
    }
-			
+			 
 		</style>
 	</head>
 	<body>
@@ -327,511 +339,465 @@
 	   
 		</a>
 		<a href="https://www.instagram.com/exclusivas_mx/" target="_blank">
-			<img src="img/icons8-instagram-logo.svg" alt="Instagram" />
+			<img src="img/instagram.png" alt="Instagram" />
 		</a>
 		<a href="https://www.facebook.com/periodicoexclusivasmx/" target="_blank">
-			<img src="img/icons8-facebook-logo.svg" alt="Facebook" />
+			<img src="img/facebook.png" alt="Facebook" />
 		</a>
 		<a href="https://www.youtube.com/@exclusivasmexico" target="_blank">
-		   <img src="img/icons8-youtube-logo.svg" alt="Youtube" />
+		   <img src="img/youtube.png" alt="Youtube" />
 		<a href="https://x.com/exclusivas_mx" target="_blank">
-			<img src="img/icons8-x-logo.svg">
+			<img src="img/letra-x.png">
 		</a>
 		<a href="https://www.tiktok.com/@exclusivas_mx/" target="_blank">
-		   <img src="img/icons8-tiktok-logo.svg" alt="Tiktok" />
+		   <img src="img/tik-tok.png" alt="Tiktok" />
 	   
 	</div>
 	
 	</body>
 	</html>
+	  
+	<article class="col-md-12">
+        <!-- Modern - Bootstrap Cards -->
+        <header>
+            
+        <!-- BLOG CARDS -->
+        
+        <div class="cards-1 section-gray">
+            <div class="container">
+                <div class="row">
+                                <div class="col-md-4">
+									<div class="card card-blog">
+										<div class="card-image">
+											<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
+											<div class="ripple-cont"></div>
+											
+										</div>
+										<div class="table">
+											<h6 class="category text-warning">
+														<i class="fa fa-soundcloud"></i> Del día
+													</h6>
+													
+											<h3 class="card-caption">
+											<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
+										</h3>
+										<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
+										</div>
+									</div>
+                            </div>
+							<div class="col-md-4">
+								<div class="card card-blog">
+									<div class="card-image">
+										<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
+										<div class="ripple-cont"></div>
+										
+									</div>
+									<div class="table">
+										<h6 class="category text-warning">
+													<i class="fa fa-soundcloud"></i> Del día
+												</h6>
+												
+										<h3 class="card-caption">
+										<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
+									</h3>
+									<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
+									</div>
+									
+								</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card card-blog">
+								<div class="card-image">
+									<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
+									<div class="ripple-cont"></div>
+									
+								</div>
+								<div class="table">
+									<h6 class="category text-warning">
+												<i class="fa fa-soundcloud"></i> Del día
+											</h6>
+											
+									<h3 class="card-caption">
+									<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
+								</h3>
+								<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
+								</div>
+								
+							</div>
+					</div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- PLAIN CARDS -->
+		<div class="section">
+        <h2>Tecnología</h2>
+		<section id="tecnologia">
+        <div class="cards-2 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
+                                <iv class="ripple-cont"></iv>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">Enero</h6>
+                                <h4 class="card-caption">
+										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">Febrero</h6>
+                                <h4 class="card-caption">
+										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">Marzo</h6>
+                                <h4 class="card-caption">
+										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</section>
+        <!-- BACKGROUND CARDS -->
+		<h2>Deporte</h2>
+		<section id="deporte"></section>
+        <div class="cards-6 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
+                                    <div class="card-caption"> John Smith </div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
+                                    <div class="card-caption"> More</div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                <a href="" class="btn btn-outline-primary btn-sm">Read More</a>
 
-
-    <style>
-        /* Estilos generales */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        /* Contenedor principal */
-        .news-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Espacio entre las tarjetas */
-            padding: 10px;
-			margin-top: 10px; /* Espacio entre el navbar y el carrusel */
-            justify-content: center; /* Centra las tarjetas horizontalmente */
-			padding-left: 10px
-        }
-
-        /* Estilos para cada tarjeta de noticia */
-        .news-card {
-            width: 400px; /* Ancho fijo para cada tarjeta */
-            background-color: white;
-            border-radius: 8px;
-			box-shadow:rgba(0, 0, 0, 0.1);
-			width: 300px; /* Ancho específico */
-			padding: 20px;
-            height: 400px; 
-			flex-direction: column;
-			justify-content: space-between;
-            text-align: center; /* Centra el texto */
-			padding-right: 10px
-        }
-
-      .card.lista-card {
-		justify-content: flex-end;
-
-}
-
-        /* Estilos para la imagen */
-        .news-card img {
-            width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
-            height: 200px; /* Altura fija para la imagen */
-            object-fit: cover; /* Ajusta la imagen para cubrir el espacio */
-        }
-
-        /* Estilos para el texto */
-        .news-card h3 {
-            margin: 15px 0 10px;
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .news-card p {
-            margin: 0 15px 15px;
-            font-size: 1em;
-            color: #666;
-        }
-
-        /* Estilos para el enlace */
-        .news-card a {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #b7371a;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .news-card a:hover {
-            background-color: #0056b3;
-        }
-
-
-		.lista-vertical {
-			list-style-type: auto;
-			padding: 0%;
-			margin: 0%;
-			width: 100%;
-		}
-
-			.lista-vertical li {
-            background-color: #f9f9f9;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 16px;
-            color: #333;
-            display: flex;
-            align-items: center;
-        }
-
-        .lista-vertical li::before {
-            content: "•";
-            color: #007BFF;
-            font-size: 20px;
-            margin-right: 10px;
-        }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
+                                    <div class="card-caption"> More</div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PROFILE CARDS 1 -->
+		<h2>Salud</h2>
+		<section id="salud"></section>
+        <div class="cards-6 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
+                                    <div class="card-caption">  More </div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
+                                    <div class="card-caption"> More </div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
+                                    <div class="card-caption">More</div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PROFILE CARDS 2 -->
+		<section id="educacion"></section>
+        <h2>Educación</h2>
+        <div class="cards-6 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
+                                    <div class="card-caption"> More </div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
+                                    <div class="card-caption">More </div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-image">
+                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
+                                    <div class="card-caption">More</div>
+                                </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PROFILE CARDS 3 -->
+		<h2>Espectaculos</h2>
+		<section id="espectaculos"></section>
+        <div class="cards-2 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
+                                <div class="ripple-cont"></div>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PRODUCT CARDS -->
+		<h2>Tendencias</h2>
+		<section id="tendencias"></section>
+        <div class="cards-2 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
+                                <div class="ripple-cont"></div>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TESTIMONIAL CARDS -->
+		<h2>Social</h2>
+		<section id="social"></section>
+        <div class="cards-2 section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
+                                <div class="ripple-cont"></div>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-info">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-danger">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-blog">
+                            <div class="card-image">
+                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
+                            </div>
+                            <div class="table">
+                                <h6 class="category text-success">More</h6>
+                                <h4 class="card-caption">
+										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
+									</h4>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 		
-    </style>
-</head>
-<body>
 
-<div class="news-container">
-<!-- Card 1: Lista Vertical -->
-<div class="card.lista-card">
-<h2>Categorías</h2>
-<ul class="lista-vertical">
-	<li>Tecnologia</li>
-	<li>Politicas</li>
-	<li>Dinero</li>
-	<li>Innovacion</li>
-	<li>Deporte</li>
-	<li>Viaje</li>
-	<li>Estilo</li>
-	<li>Salud</li>
-</ul>
-</div>
 
-<!-- Card 2: Noticias -->
-<div class="news-card">
-	<img src="img/noticia-2.png" alt="Noticia 2">
-	<h3>Propuesta Legislativa para inclusión</h3>
-	<p>Impulsan propuesta legislativa para fomentar inclusión y educación financiera con perspectiva de género.</p>
-	<a href="#">Leer más</a>
-</div>
-
-<!-- Card 3: Otra Información -->
-<div class="news-card">
-	<img src="img/noticia-2.png" alt="Noticia 2">
-	<h3>Propuesta Legislativa para Inclusión</h3>
-	<p>Impulsan propuesta legislativa para fomentar inclusión y educación financiera con perspectiva de género.</p>
-	<a href="#">Leer más</a>
-</div>
-</div>
-
-</body>
-</html>
-
-<main>
-	<div class="wrapper">
-	  <div class="container-fluid">
-		<section class="row">
-		 <div class="col-6 col-6 col-sm-6 col-md-6">
-			<h1>El fentanilo llega de China a México, AMLO afirma tener pruebas</h1>
-			<article>
-				<div class="image-block">
-					<img src="img/articles/article-1.png" alt="img1">
-					<div class="label-block">
-						<div class="image-label">Por Exclusivas</div>
-					</div><!--label-block-->	
-				</div><!--image-block-->
-				<h3 class="bold">La primera ministra británica May ha perdido el control de su partido, el parlamento, el manifiesto político y el Brexit</h3>
-				<class="last-news">
-					<li><a href="">Lo que significa el terremoto de las elecciones en el Reino Unido para el mundo</a></li>
-					<li class="play"><a href="">Cierran la Puebla Orizaba tras volcadura de tráiler, esto sabemos del accidente</a></li>
-				</class=>
-			</article>
-		</div>
-			<article>
-				<div class="image-block">
-					<img src="img/articles/article-3.avif" alt="img-3">
-				</div><!--image-block-->
-				<h3 class="semi-grey">Cuauhtémoc Blanco; es investigado por abuso sexual</h3>
-			</article>
-		</div><!--col-->
-		<div class="col col-12 col-sm-12 col-md-3">
-			<article>
-				<div class="category">
-					Historias destacadas
-				</div>
-				<div class="image-block">
-					<img src="img/articles/article-4.JFIF" alt="-4">	
-				</div><!--image-block-->
-				<h3 class="middle-size">Sheinbaum responde con firmeza a EEUU sobre la declaración de guerra a cárteles mexicanos: “Empiecen por su país”</h3>
-				<ul class="last-news">
-					<li><a href="">La nube rusa se asienta sobre Trump</a></li>
-					<li><a href="">Puerto Rico vota para convertirse en el estado 51 </a></li>
-					<li><a href="">Arrestos mientras el ejército surcoreano realiza una caza de brujas gay</a></li>
-					<li><a href="">Si hay cintas de Comey, ¿Trump tiene que entregarlas?</a></li>
-					<li><a href="">La crisis del Golfo amenaza con separar a las familias</a></li>
-					<li><a href="">Ex fiscal de Santa maría Se sincera sobre las llamadas de Angel</a></li>
-				</ul>
-			</article>
-		</div><!--col-->
-	   </section>	<!--row-->
-	   <section class="row">
-	   		<div class="col  col-sm-5 col-md-3 col-12">
-	   		  <article>
-				<div class="category">
-					Alrededor del mundo
-				</div>
-				<div class="image-block">
-					<img src="img/articles/article-5.jpg" alt="img5">	
-				</div><!--image-block-->
-				<h3 class="middle-size">Rafael Nadal hace historia en el Abierto de Francia</h3>
-				<ul class="last-news">
-					<li><a href="">Melania se muda a la Casa Blanca</a></li>
-					<li><a href="">La Casa Blanca niega que Trump retrase la visita al Reino Unido</a></li>
-					<li><a href="">Encuentran a menor en Puebla desaparecida en Tijuana</a></li>
-					<li><a href="">Se estanca la producción de autopartes en Puebla</a></li>
-					<li><a href="">Uber cultura laboral bajo fuego</a></li>
-					<li><a href="">TV host Después del accidente: 'No estoy muerta'</a></li>
-					<li><a href="">Sujeto arroja piedra sobre perrito 'Huesitos' mientras dormía en Puebla</a></li>
-				</ul>
-			</article>
-	   		</div><!--col-->
-			   			|
-	   			 <div class="category">
-			<article class="no-margin">
-				<div class="row">
-					<div class="col-6">
-						<img src="img/articles/article-7.jpg" alt="img-7">
-					</div><!--col-5-->
-					<div class="col-7">
-						<h3 class="middle-size">¿La obsesión por la riqueza ha ido demasiado lejos?</h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-			<article class="top-border">
-				<div class="row">
-					<div class="col-6">
-						<img src="img/articles/article-8.jpg" alt="img-8">
-					</div><!--col-5-->
-					<div class="col-7">
-						<h3 class="middle-size">Por qué estas son comidas rechazadas por todos</h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-	   		</div><!--col-5-->
-	   		<div class="col col-sm col-md-3 col-12">
-				<div class="category">
-					Destacar
-				</div>
-	   			<article class="no-margin">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-9.png" alt="img-9">
-					</div><!--col-5-->
-					<div class="col-9">
-						<h3 class="small-size">Sharapova se retira de la clasificación de Wimbledon</h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-			<article class="top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-10.jpg" alt="img-10">
-					</div><!--col-5-->
-					<div class="col-9">
-						<h3 class="small-size">Puebla reporta más de 800 casos de violencia familiar en enero 2025</h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-	   		</div><!--col/sec2-->
-	   </section><!--row/sec2-->
-	   <section class="row">
-	   		<div class="col col-12 col-md-3 col-sm-5">
-	   		  <article  class="no-margin">
-				<div class="category">
-					Mira más de cerca
-				</div>
-				<div class="image-block">
-					<img src="img/articles/article-11.jpg" alt="img-11">	
-				</div><!--image-block-->
-				<h3 class="middle-size">Siguen clausuras a verificentros de Puebla; cancelan Policía Ambiental</h3>
-			 </article>
-			 <article class="no-margin top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-12.jpg" alt="img-12">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size">Hamilton obtiene su sexta victoria en el Gran Premio de Canadá</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-			<article class="no-margin top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-13.jpg" alt="img-13">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size">La nueva 'cultura de la compasión' de Chiapas</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-			<article class="top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-14.jpg" alt="img-14">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size">¿Quieres ser feliz y tener éxito? Prueba la compasión</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-	   		</div><!--col-->
-	   		<div class="col-3 col-sm-7 col-3 col-md-6">
-				<div class="category">
-					Premios
-				</div>
-	   		  <article class="no-margin">
-				<div class="image-block">
-					<img src="img/articles/article-15.jpg" alt="img-15">
-					<div class="label-block">
-						<h3 class="full-width-heading no-margin with-opacity">¿Que son los premios Tony?</h3>
-					</div><!--label-block-->	
-				</div><!--image-block-->
-			</article>
-			<article class="no-margin">
-				<div class="row">
-					<div class="col-3">
-						<img src="img/articles/article-16.jpg" alt="img-16">
-					</div><!--col-5-->
-					<div class="col-7">
-						<h3 class="middle-size">Explorando la isla más verde del estado</h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-			<article class="top-border">
-				<div class="row">
-					<div class="col-3">
-						<img src="img/articles/article-17.jpg" alt="img-17">
-					</div><!--col-5-->
-					<div class="col-7">
-						<h3 class="middle-size">Descubren fotos 'perdidas' de una <span class="dashicons dashicons-image-filter"></span></h3>
-					</div><!--col-7-->
-				</div><!--row-->
-			</article>
-	   		</div><!--col-5-->
-	   		<div class="col col-12 col-sm col-md-3">
-	   		  <article  class="no-margin">
-				<div class="category">
-					Opinion
-				</div>
-				<div class="image-block">
-					<img src="img/articles/article-18.jpg" alt="img-18">	
-				</div><!--image-block-->
-				<h3 class="middle-size"><span class="bold">David A. Andelman:</span>Macron, el hombre fuerte que Mexico necesita</h3>
-			 </article>
-			 <article class="no-margin top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-19.jpg" alt="img-19">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size"><span class="bold">Oma Seddiq:</span>  Mi vida como estudiante en Puebla</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-			<article class="no-margin top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-20.jpg" alt="img-20">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size"><span class="bold">Laura:</span>La historia de vida de Laura</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-			<article class="top-border">
-				<div class="row">
-					<div class="col-3 no-padding-right">
-						<img  src="img/articles/article-21.jpg" alt="img-21">
-					</div><!--col-3-->
-					<div class="col-9">
-						<h3 class="small-size"><span class="bold">James Bloodworth:</span>El auge de la izquierda sacude la política</h3>
-					</div><!--col-9-->
-				</div><!--row-->
-			</article>
-	   	 </div><!--col-->
-	   </section><!--row/sec3-->
-	   <section class="mt-30">
-	   		<h3 class="section-heading">Secciones destacadas</h3>
-	   		<div class="row">
-	   		   <div class="col-lg-4 col-6">
-	   			<article>
-				 <div class="category">
-					Deporte
-				 </div>
-				 <div class="image-block">
-					<img src="img/articles/article-22.jpg" alt="img-22">	
-			   	 </div><!--image-block-->
-				 <h3 class="middle-size">¿Qué pasa en las 21 horas cuando las estrellas del fútbol no están entrenando?</h3>
-				 <ul class="last-news">
-					<li><a href="">La arcilla roja se vuelve 'verde' en una reforma de 40 millones de dólares</a></li>
-					<li><a href="">Uvas del éxito: Buffon incursiona en el negocio del vino</a></li>
-					<li><a href="">Bryan Habana: las estrellas del ruby sorprenden al descubrimiento del ADN</a></li>
-					<li><a href="">Mario Balotelli no es problema, es un buen tipo</a></li>
-				 </ul>
-			   </article>
-	   		  </div><!--col-4-->
-	   		  <div class="col-lg-4 col-6">
-	   		  	<article>
-				 <div class="category">
-					Viaje
-				 </div>
-				 <div class="image-block">
-					<img src="img/articles/article-23.jpg" alt="img-23">	
-			   	 </div><!--image-block-->
-				 <h3 class="middle-size">Un volcán en una isla dentro de un lago dentro de una isla</h3>
-				 <ul class="last-news">
-					<li><a href="">El mejor caramelo de jarabe de arce en Montreal</a></li>
-					<li><a href="">Lantau: explorando la isla más verde de Hong Kong</a></li>
-					<li><a href="">Secretos de la antigua Ruta de la Seda</a></li>
-					<li><a href="">Compras en Barcelona: una guía de estilistas de moda</a></li>
-				 </ul>
-			   </article>
-	   		  </div><!--col-4-->
-	   		  <div class="col-lg-4 col-8">
-	   		  	<article>
-				 <div class="category">
-					Estilo
-				 </div>
-				 <div class="image-block">
-					<img src="img/articles/article-24.jpg" alt="img-24">	
-			   	 </div><!--image-block-->
-				 <h3 class="middle-size">Fotos increíbles muestran el mundo como nunca lo has visto</h3>
-				 <ul class="last-news">
-					<li><a href="">Los aterradores síntomas de la parálisis del sueño</a></li>
-					<li><a href="">La embajada de Estados Unidos genera controversia</a></li>
-					<li><a href="">La nueva torre devoradora de carbono que se levanta en el este</a></li>
-					<li><a href="">Conmovedor tributo al abuelo 'hipster' se vuelve viral</a></li>
-				 </ul>
-			   </article>
-	   		  </div><!--col-4-->
-	   		</div><!--row-->
-	   		<div class="row">
-	   			<div class="col-lg-4 col-6">
-	   			  <article>
-					 <div class="category">
-						Dinero
-					 </div>
-				   <div class="image-block">
-					<img src="img/articles/article-25.jpg" alt="img-25">	
-			   	   </div><!--image-block-->
-				   <h3 class="middle-size">Trump está perjudicando el turismo estadounidense</h3>
-				  <ul class="last-news">
-					<li><a href="">Queretaro extiende su épica carrera sin recesión</a></li>
-					<li><a href="">Las mejores 3 cenres emjor pagadas</a></li>
-					<li><a href="">Observa cómo 350 bolas de algodón se convierten en una camisa</a></li>
-					<li><a href="">Cómo la economía de Chiapas antiene resistente</a></li>
-				  </ul>
-			     </article>
-	   			</div><!--col-4-->
-	   			<div class="col-lg-4 col-6">
-	   			  <article>
-				   <div class="category">
-					Salud
-				   </div>
-				   <div class="image-block">
-					<img src="img/salud.jpg" alt="img-26">	
-			   	   </div><!--image-block-->
-				   <h3 class="middle-size">Frutas y verduras que podrían envenenarte</h3>
-				   <ul class="last-news">
-					<li><a href="">'Sigilo': otras lo llaman agresión sexual</a></li>
-					<li><a href="">Inteligencia artificial y modelos matemáticos:</a></li>
-					<li><a href="">Futuro de la medicina personalizada contra el cánce</a></li>
-					<li><a href="">Muere un hombre después de nadar con un nuevo tatuaje</a></li>
-				   </ul>
-			     </article>
-	   			</div>
-				   <div class="col-lg-4 col-6">
-					<article>
-				  <div class="category">
-				   Politica
-				  </div>
-				  <div class="image-block">
-				   <img src="img/policita.jpg" alt="img-26">	
-					 </div><!--image-block-->
-				  <h3 class="middle-size">Gobierno de Puebla analiza reubicación de caseta</h3>
-				  <ul class="last-news">
-				   <li><a href="">'Sigilo': otras lo llaman agresión sexual</a></li>
-				   <li><a href="">La pérdida de peso depende de cuándo, no qué, come</a></li>
-				   <li><a href="">426 patrullas en mal estado dejó el gobierno municipal anterior: SSC</a></li>
-				   <li><a href="">Muere un hombre después de nadar con un nuevo tatuaje</a></li>
-				  </ul>
-				</article>
-				  </div><!--c!--col-4-->
-	   		</div><!--row-->
-	   </section><!--sec4-->
-	 </div> <!--container-fluid-->
-	</div><!--wrapper-->
+	  
 	<section class="dark-section mt-30">
 		<div class="wrapper">
 			<h3 class="section-heading">En caso que te lo hayas perdido</h3>
@@ -839,7 +805,7 @@
 				<div class="col-lg-9 col-12">
 				  <article class="no-margin">
 				   <div class="image-block">
-					<img src="img/articles/article-27.jfif" alt="img-27">
+					<img src="https://www.clarin.com/2023/11/16/axDPbgJDK_1200x0__1.jpg" alt="img-27">
 					<div class="label-block">
 						<div class="image-label">EXCLUSIVAS</div>
 						<h3 class="full-width-heading no-margin with-opacity full-width-b">
@@ -851,15 +817,15 @@
 				<div class="col-lg-3 col-8">
 					<article>
 						<div class="image-block">
-						<img src="img/articles/article-28.jpg" alt="img-28">
+						<img src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/3294/production/_109984921_bandera.jpg.webp" alt="img-28">
 			   	  		</div><!--image-block-->
 			   	  		<h3 class="middle-size">¿Qué líder europea eres?</h3>
 					</article>
 					<article>
 						<div class="image-block">
-						<img src="img/articles/article-29.jpg" alt="img-29">
+						<img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2017/10/Depositphotos_245085204_L.jpg" alt="img-29">
 			   	  		</div><!--image-block-->
-			   	  		<h3 class="middle-size">Oaxaca: ¿Como se pierdo en el paraiso?</h3>
+			   	  		<h3 class="middle-size">Oaxaca: accidente en puerto escondido tome sus precauciones</h3>
 					</article>
 				</div><!--col-3-->
 			</div><!--row-->
@@ -870,13 +836,15 @@
    <div class="wrapper">
    	<div class="footer-top-block">
    		<div class="footer-weather">
-   			<p class="location"> Cuidad de Mexico </p>			
-   			<img src="img/icons8-clima-48.png" alt="weather" height="38">
-   			<div class="temp">22°</div>
-   		</div>
-   				
-		 
+   			<h4 class="location"> Cuidad de Mexico </h4>			
+   			<img src="img/icons8-clima-48.png" alt="weather" height="48">
+			 
 		
+
+
+
+   		</div>
+	
    	</div><!--footer-top-block-->
 	<div class="expanded-top-block">
 		<div class="container-fluid">
@@ -889,7 +857,7 @@
 							<li><a href="">Tlaxcala</a></li>
 							<li><a href="">CDMX</a></li>
 							<li><a href="">Estado de Mexico</a></li>
-							<li><a href="">Oaxaca</a></li>
+							<li><a href=""></a></li>
 							<li><a href="">Qeretaro</a></li>
 							<li><a href="">Morelos</a></li>
 							<li><a href="">Opiniones</a></li>
@@ -903,7 +871,7 @@
 							<li><a href="">45</a></li>
 							<li><a href="">Congresos</a></li>
 							<li><a href="">Seguridad</a></li>
-							<li><a href="">Noticia del día</li>
+							<li><a href="">Noticia  día</li>
 							<li><a href="">Trumpmerica</a></li>
 							<li><a href="">Estado</a></li>
 						</ul>
@@ -928,7 +896,7 @@
 						<li><a href="">Pantalla</a></li>
 						<li><a href="">Borrachera</a></li>
 						<li><a href="">Cultura</a></li>
-						<li><a href="">Media</a></li>
+						<li><a href="">Media</p></li>
 						</ul>
 					</div>
 				</div>
@@ -1035,7 +1003,7 @@
 				</div>
 			</div><!--row-->
 		</div><!--container-fluid-->
-	</div><!--expanded-top-block-->
+	</div>expanded-top-block
 
 	 <div class="footer-bottom-right">
 	 	<div class="footer-copy">
@@ -1057,6 +1025,5 @@
    </div><!--wrapper-->
    
 </footer>
-</body>
 </body>
 </html>
