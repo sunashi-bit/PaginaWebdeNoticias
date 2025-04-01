@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusivas Puebla - Noticia</title>
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+    <nav class="page-nav">
+       
+
+          <!-- Navbar -->
+    <header class="page-header">
+        <!-- Logo dentro del navbar (opcional) -->
+        <div class="page-logo">
+            <a href="">
+                <img src="img/articles/1x/Recurso4.png" alt="Page Logo">
+            </a>
+        </div>
+        <!-- Lista de menú -->
+        <ul class="lista-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#tecnologia">Tecnología</a></li>
+            <li><a href="#deporte">Deporte</a></li>
+            <li><a href="#salud">Salud</a></li>
+            <li><a href="#educacion">Educación</a></li>
+            <li><a href="#espectaculos">Espectaculos</a></li>
+            <li><a href="#tendencias">Tendencias</a></li>
+            <li><a href="#social">Social</a></li>
+
+        </ul>
+    </nav>
+    
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exclusivas Puebla - Noticia</title>
+        <style>
+            /* Reset y estilos base */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+            }
+            
+            body {
+                background-color: #f8f8f8;
+                color: #333;
+                line-height: 1.6;
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 180px;
+            }
+            
+            /* Estilos del encabezado */
+            .article-header {
+                margin-bottom: 30px;
+                border-bottom: 1px solid #e1e1e1;
+                padding-bottom: 20px;
+            }
+            
+            .article-title {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                line-height: 1.2;
+            }
+            
+            .article-meta {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+                color: #666;
+            }
+            
+            .source {
+                font-weight: 700;
+                color: #333;
+                margin-right: 15px;
+            }
+            
+            .date, .reading-time {
+                margin-right: 15px;
+            }
+            
+            .divider {
+                height: 1px;
+                background-color: #e1e1e1;
+                margin: 20px 0;
+            }
+            
+            /* Imagen principal */
+            .featured-image {
+                width: 50%;
+                height: auto;
+                border-radius: 8px;
+                margin-bottom: 25px;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            }
+            
+            /* Sección de lo más leído */
+            .most-read {
+                margin-top: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #e3dada;
+            }
+            
+            .news-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .news-item {
+                background-color: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .news-item:hover {
+                transform: translateY(-5px);
+            }
+            
+            .news-image {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                display: block;
+            }
+            
+            .news-content {
+                padding: 15px;
+            }
+
+           
+            
+            .news-category {
+                display: inline-block;
+                padding: 5px 10px;
+                background-color: #e74c3c;
+                color: white;
+                font-size: 0.8rem;
+                font-weight: 700;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .highlight {
+                background-color: #f39c12;
+            }
+            
+            .news-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+            
+            .news-meta {
+                font-size: 0.85rem;
+                color: #666;
+            }
+            
+            /* Ajustes responsivos */
+            @media (max-width: 768px) {
+                .article-title {
+                    font-size: 1.6rem;
+                }
+                
+                .news-list {
+                    grid-template-columns: 1fr 1fr;
+                }
+                
+                .news-image {
+                    height: 150px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                body {
+                    padding: 15px;
+                }
+                
+                .article-title {
+                    font-size: 1.4rem;
+                }
+                
+                .article-meta {
+                    flex-wrap: wrap;
+                }
+                
+                .source, .date, .reading-time {
+                    margin-bottom: 5px;
+                }
+                
+                .news-list {
+                    grid-template-columns: 1fr;
+                }
+                
+                .news-image {
+                    height: 200px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <header class="article-header">
+                <h1 class="article-title">Participa Sergio Salomón en reunión con Sheinbaum y Kristi Noem</h1>
+                <div class="article-meta">
+                    <span class="source">Exclusivas Puebla</span>
+                    <span class="date">28 marzo, 2025</span>
+                    <span class="reading-time">1 Min de lectura</span>
+                </div>
+            </header>
+            
+            <!-- Imagen principal del artículo -->
+            <img src="img/Carrusel-1.png" 
+                 alt="Sergio Salomón en reunión con Claudia Sheinbaum y Kristi Noem" 
+                 class="featured-image">
+            
+            <div class="divider"></div>
+            
+            <section class="most-read">
+                <h2 class="section-title">La más leído de la semana</h2>
+                
+                <div class="news-list">
+                    <!-- Artículo 1 -->
+                    <div class="news-item">
+                        <img src="img/Carrusel-1.png" 
+                             alt="Proceso de Admisión COBAEP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">DESTACADO | GENTE EXCLUSIVA</span>
+                            <h3 class="news-title">Conoce el Proceso de Admisión 2025-2026 del Cobaep: Alejandro Sánchez</h3>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">7 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 2 -->
+                    <div class="news-item">
+                        <img src="img/Carrusel-1.png" 
+                             alt="Proceso de Admisión BUAP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">DESTACADO | ESPACIO UNIVERSITARIO</span>
+                            <h3 class="news-title">¡En riesgo Proceso de Admisión BUAP 2025 por el 6% de universitarios en paro!</h3>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">6 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 3 -->
+                    <div class="news-item">
+                        <img src="img/Carrusel-1.png"
+                             alt="Juan Carlos Valdéz Zayas" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">GOBIERNO</span>
+                            <h3 class="news-title">Juan Carlos Valdéz Zayas asume la dirección del DIF Puebla tras sesión extraordinaria</h3>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">3 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </body>
+    </html>

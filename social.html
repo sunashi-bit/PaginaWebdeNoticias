@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="styles.css"> <!-- Mismo CSS si lo compartes -->
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/social.css">
+	<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+</head>
+
+    <section id="inicio"></section>
+<div class="image-container">
+    <img id="logo" src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
+</div>
+
+
+<!-- Navbar -->
+<header class="page-header">
+    <!-- Logo dentro del navbar (opcional) -->
+    <div class="page-logo">
+        <a href="">
+            <img src="img/articles/1x/Recurso4.png" alt="Page Logo">
+        </a>
+    </div>
+
+    
+
+    <!-- Enlaces del navbar -->
+    <nav class="page-nav">
+       
+        <!-- Lista de menú -->
+        <ul class="lista-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="politica.html">Política</a></li>
+            <li><a href="educacion.html">Educación</a></li>
+        <li><a href="internacional.html">Internacional</a></li>
+        <li><a href="social.html">Social</a></li>
+        <li><a href="tendencias.html">Tendencias</a></li>
+        <li><a href="espectaculos.html">Espectaculos</a></li>
+        <li><a href="deporte.html">Deporte</a></li>
+
+        </ul>
+    </nav>
+    
+    
+
+
+<script>
+// Función para formatear la fecha y hora
+function updateDateTime() {
+    const now = new Date(); // Obtiene la fecha y hora actual
+    const options = {
+        weekday: 'long', // Día de la semana (ej: "lunes")
+        year: 'numeric', // Año (ej: "2023")
+        month: 'long',   // Mes (ej: "octubre")
+        day: 'numeric',  // Día del mes (ej: "23")
+        hour: '2-digit', // Hora (ej: "09")
+        minute: '2-digit', // Minutos (ej: "45")
+        // second: '2-digit', // Segundos (ej: "30")
+        hour12: true // Formato de 12 horas (true) o 24 horas (false)
+    };
+    const formattedDateTime = now.toLocaleDateString('es-ES', options); // Formatea la fecha y hora
+    const capitalizedDateTime = formattedDateTime.charAt(0).toUpperCase() + formattedDateTime.slice(1); // Capitaliza la primera letra
+    document.getElementById('datetime').textContent = formattedDateTime; // Actualiza el contenido
+}
+
+// Actualiza la fecha y hora cada segundo
+setInterval(updateDateTime, 1000);
+
+// Inicializa la fecha y hora al cargar la página
+updateDateTime();
+</script>
+
+
+
+    <!-- Botones adicionales (búsqueda, tema, etc.) -->
+
+        <div class="theme-toggle">
+            <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
+        </div>
+    </div>
+</header>
+
+<script>
+    // Cambiar tema claro/oscuro
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    const logo = document.getElementById('logo'); // Obtén el elemento del logo
+
+    themeIcon.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        updateTheme();
+    });
+
+    function updateTheme() {
+        logo.style.opacity = 0; // Oculta la imagen
+        setTimeout(() => {
+            if (body.classList.contains('dark')) {
+                themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
+                logo.src = 'IMG/Logo-Withe-M-Exclusivas-MX.png'; // Cambia al logo oscuro
+            } else {
+                themeIcon.src = '/img/icons8-moon-30.png'; // Cambia a sol
+                logo.src = 'IMG/Logo-black-M-Exclusivas-MX.png'; // Cambia al logo claro
+            }
+            logo.style.opacity = 1; // Muestra la imagen
+        }) 
+    }
+
+    // Inicializar el tema al cargar la página
+    updateTheme()
+</script>
+
+
+
+    <h3>Noticias de Espectáculos</h3>
+    
+</head>
+<body>
+    <h1>Últimas Noticias de ESPECTÁCULOS /</h1>
+    
+    <div class="news-card">
+        <div class="news-image-container">
+            <!-- Agrega tu imagen aquí -->
+            <img src="img/noticia-2.png" alt="Coque Muñiz y su hijo Axel" class="news-image">
+            <span class="news-source">Exclusivas Puebla</span>
+        </div>
+        
+        <h2 class="news-title">"Velada Romántica": Coque Muñiz y su hijo Axel conquistan al público poblano</h2>
+        <p class="news-excerpt">Un homenaje a la música romántica con un Teatro Principal a lleno...</p>
+        
+        <div class="news-meta">
+            <span class="news-date">25 marzo, 2025</span>
+            <span class="news-views">2 Vistas</span>
+        </div>
+        <span class="read-time">2 Min de lectura</span>
+    </div>
+    
+    <!-- Segunda noticia -->
+    <div class="news-card">
+        <div class="news-image-container">
+            <!-- Agrega tu imagen aquí -->
+            <img src="img/kany.jpg" alt="Kany García en concierto" class="news-image">
+            <span class="news-source">Exclusivas Puebla</span>
+        </div>
+        
+        <h2 class="news-title">Kany García brilla en Puebla: un concierto inolvidable</h2>
+        <p class="news-excerpt">La cantante demostró una vez más su talento y su conexión con...</p>
+        
+        <div class="news-meta">
+            <span class="news-date">24 marzo, 2025</span>
+            <span class="news-views">6 Vistas</span>
+        </div>
+        
+        <span class="read-time">2 Min de lectura</span>
+    </div>
+    
+</body>
+</html>
+
+   
+</body>
+</html>

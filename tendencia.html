@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>Exclusivas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+	
+<script>
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', initClima);
+</script>
+
+<script src="datetime"></script>
+<script src="carrusel.js"></script>
+<script src="scroll.js"></script>
+
+<body>
+
+    <!-- Contenedor del logo -->
+	 <head>
+        <section id="inicio"></section>
+    <div class="image-container">
+        <img id="logo" src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
+    </div>
+	
+
+    <!-- Navbar -->
+    <header class="page-header">
+        <!-- Logo dentro del navbar (opcional) -->
+        <div class="page-logo">
+                <img src="img/articles/1x/ultimo1.png" alt="Page Logo">
+            </a>
+        </div>
+	
+		
+
+        <!-- Enlaces del navbar -->
+        <nav class="page-nav">
+           
+            <!-- Lista de menú -->
+            <ul class="lista-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="politica.html">Política</a></li>
+            <li><a href="educacion.html">Educación</a></li>
+            <li><a href="internacional.html">Internacional</a></li>
+            <li><a href="social.html">Social</a></li>
+            <li><a href="tendencias.html">Tendencias</a></li>
+            <li><a href="espectaculos.html">Espectaculos</a></li>
+            <li><a href="deporte.html">Deporte</a></li>
+            </ul>
+        </nav>
+        
+        
+
+
+<script>
+	// Función para formatear la fecha y hora
+	function updateDateTime() {
+		const now = new Date(); // Obtiene la fecha y hora actual
+		const options = {
+			weekday: 'long', // Día de la semana (ej: "lunes")
+			year: 'numeric', // Año (ej: "2023")
+			month: 'long',   // Mes (ej: "octubre")
+			day: 'numeric',  // Día del mes (ej: "23")
+			hour: '2-digit', // Hora (ej: "09")
+			minute: '2-digit', // Minutos (ej: "45")
+			// second: '2-digit', // Segundos (ej: "30")
+			hour12: true // Formato de 12 horas (true) o 24 horas (false)
+		};
+		const formattedDateTime = now.toLocaleDateString('es-ES', options); // Formatea la fecha y hora
+		const capitalizedDateTime = formattedDateTime.charAt(0).toUpperCase() + formattedDateTime.slice(1); // Capitaliza la primera letra
+		document.getElementById('datetime').textContent = formattedDateTime; // Actualiza el contenido
+	}
+
+	// Actualiza la fecha y hora cada segundo
+	setInterval(updateDateTime, 1000);
+
+	// Inicializa la fecha y hora al cargar la página
+	updateDateTime();
+</script>
+
+
+
+        <!-- Botones adicionales (búsqueda, tema, etc.) -->
+          
+        <div class="header-right">
+            <div id="datetime"></div>
+            <div class="search">
+                <input type="checkbox" id="search-switcher" hidden>
+                <input type="search" placeholder="Buscar" class="page-search-field" id="page-search-field-id">
+                <label for="page-search-field-id" class="page-search-field-label"></label>
+                <label for="search-switcher" class="search-switcher-label" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </label>
+                <div id="search-results" class="search-results"></div> <!-- Contenedor para resultados -->
+            </div>
+        </div>
+			<script> 
+            const items = [
+    { name: 'social', url: 'social.html' },
+    { name: 'privacidad', url: 'index.html' },
+    { name: 'Tema 2', url: 'pagina2.html' },
+    { name: 'Tema 3', url: 'pagina3.html' },
+    { name: 'Tema 4', url: 'pagina4.html' }
+]; // Reemplaza esto con tus datos
+
+function toggleSearch() {
+    const searchContainer = document.querySelector('.search');
+    const searchField = document.getElementById('page-search-field-id');
+    const resultsContainer = document.getElementById('search-results');
+
+    // Alternar la clase 'active' en el contenedor de búsqueda
+    searchContainer.classList.toggle('active');
+
+    // Si el campo de búsqueda está visible, enfocar en él
+    if (searchContainer.classList.contains('active')) {
+        searchField.focus();
+    } else {
+        searchField.value = ''; // Limpiar el campo si se cierra
+        resultsContainer.innerHTML = ''; // Limpiar resultados
+        resultsContainer.style.display = 'none'; // Ocultar resultados
+    }
+}
+
+document.getElementById('page-search-field-id').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpiar resultados anteriores
+    resultsContainer.style.display = 'none'; // Ocultar resultados por defecto
+
+    if (query) {
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(query));
+        
+        filteredItems.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.textContent = item.name;
+            resultItem.addEventListener('click', function() {
+                window.location.href = item.url; // Redirigir al hacer clic
+            });
+            resultsContainer.appendChild(resultItem);
+        });
+
+        if (filteredItems.length > 0) {
+            resultsContainer.style.display = 'block'; // Mostrar resultados si hay coincidencias
+        }
+    }
+});
+
+// Cerrar el campo de búsqueda si se hace clic fuera de él
+document.addEventListener('click', function(event) {
+    const searchContainer = document.querySelector('.search');
+    if (!searchContainer.contains(event.target)) {
+        searchContainer.classList.remove('active');
+        document.getElementById('page-search-field-id').value = ''; // Limpiar el campo si se cierra
+        document.getElementById('search-results').innerHTML = ''; // Limpiar resultados
+        document.getElementById('search-results').style.display = 'none'; // Ocultar resultados
+    }
+});
+	</script>   
+            <div class="theme-toggle">
+                <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Cambiar tema claro/oscuro
+		const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        const logo = document.getElementById('logo'); // Obtén el elemento del logo
+
+        themeIcon.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            updateTheme();
+        });
+
+        function updateTheme() {
+            logo.style.opacity = 0; // Oculta la imagen
+            setTimeout(() => {
+                if (body.classList.contains('dark')) {
+                    themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
+                    logo.src = 'IMG/Logo-Withe-M-Exclusivas-MX.png'; // Cambia al logo oscuro
+                } else {
+                    themeIcon.src = '/img/icons8-moon-30.png'; // Cambia a sol
+                    logo.src = 'IMG/Logo-black-M-Exclusivas-MX.png'; // Cambia al logo claro
+                }
+                logo.style.opacity = 1; // Muestra la imagen
+            }) 
+		}
+
+        // Inicializar el tema al cargar la página
+        updateTheme()
+    </script>
+
+
+
+
+    <div class="main-container">
+        <!-- Carousel -->
+        <div class="carrusel">
+            <span class="news-source">Destacados</span>
+            <div class="carrusel-container" id="carrusel">
+                <img src="img/noticia-1.png" alt="Image 1">
+                <img src="img/noticia-2.png" alt="Image 2" >
+                
+                <img src="img/Carrusel-2.webp" alt="Image 4" >
+            </div>
+        </div>
+        <script>        
+            const carruselContainer = document.querySelector('.carrusel-container');
+            const images = document.querySelectorAll('.carrusel img');
+            const totalImages = images.length;
+            let currentIndex = 0;
+            
+            function moveToNextImage() {
+                currentIndex = (currentIndex + 1) % totalImages; // Move to the next index
+                const offset = -currentIndex * 100; // Calculate the offset
+                carruselContainer.style.transform = `translateX(${offset}%)`; // Apply the transformation
+            }
+            
+            // Change image every 3 seconds (3000 ms)
+            setInterval(moveToNextImage, 3000);
+            </script>
+
+		<section class="mais-lidas">
+		    <div class="mais-lida">
+			<h3>Lo más leído</h3>
+			<div class="mais-lida-noticia-single">
+			    <div class="texto-mais-lida-single">
+				<h4>Social</h4>
+				<a href="social.html">Veto de amlo a anai fue por reparto entre pan y morena</a>
+				<div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+    
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+            <div class="mais-lida-noticia-single">
+			    <div class="texto-mais-lida-single">
+				<h4>Política</h4>
+				<a href="política.html">Veto de amlo a anai fue por reparto entre pan y morena</a>
+				<div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+        
+			    </div><!-- div-texto-mais-lida-single -->
+			</div>
+			<div class="mais-lida-noticia-single">
+			   
+			    <div class="texto-mais-lida-single">
+				<h4>Salud</h4>
+				<a href="salud.html">Atención médica universal y gratuita, la desaparición del Insabi: Adán Augusto
+</a>
+                <div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+				
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+			<div class="mais-lida-noticia-single">
+			    
+			    <div class="texto-mais-lida-single">
+				<h4>Deporte</h4>
+				<a>En San José Tenango, Puebla, inauguran canchas de basquetbol
+                </a>
+                <div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+				
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+		    </div><!-- div-mais-lidas -->
+        </div>
+	</section>
+
+	
+    </div>
+
+  
+</section>
+
+		
+	</head>
+    
+	<div id="social-icons">
+	   
+		</a>
+		<a href="https://www.instagram.com/exclusivas_mx/" target="_blank">
+			<img src="img/instagram.png" alt="Instagram" />
+		</a>
+		<a href="https://www.facebook.com/periodicoexclusivasmx/" target="_blank">
+			<img src="img/facebook.png" alt="Facebook" />
+		</a>
+		<a href="https://www.youtube.com/@exclusivasmexico" target="_blank">
+		   <img src="img/youtube.png" alt="Youtube" />
+		<a href="https://x.com/exclusivas_mx" target="_blank">
+			<img src="img/letra-x.png">
+		</a>
+		<a href="https://www.tiktok.com/@exclusivas_mx/" target="_blank">
+		   <img src="img/tik-tok.png" alt="Tiktok" />
+	   
+	</div>
+	
+    <div class="side-image" style="order: -1;">
+           
+        <div class="image-sis">
+            <a href="https://sport-ti.mx/?srsltid=AfmBOopbxEqK7OaeYJh9eL7VpD0nzrKNHil6wtUDZUaAQ-DftksLfNU8" target="_blank">
+                <img src="img/Banner-Top3.jpg" alt="SPORT-TI Logo" srcset="img/Banner-Top3.jpg 400w,
+                img/Banner-Top3.jpg 800w,
+                img/Banner-Top3.jpg 1200w"
+        sizes="(max-width: 600px) 400px,
+               (max-width: 1024px) 800px,
+               1200px"
+        alt="Imagen responsiva">
+            </a>
+        </div>
+    
+</div>
+	  

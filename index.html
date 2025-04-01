@@ -16,18 +16,21 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	
-	<script src="clima.js"></script>
+	
 <script>
     // Inicializar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', initClima);
 </script>
 
 <script src="datetime"></script>
+<script src="carrusel.js"></script>
+<script src="scroll.js"></script>
 
 <body>
 
     <!-- Contenedor del logo -->
 	 <head>
+        <section id="inicio"></section>
     <div class="image-container">
         <img id="logo" src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
     </div>
@@ -37,8 +40,7 @@
     <header class="page-header">
         <!-- Logo dentro del navbar (opcional) -->
         <div class="page-logo">
-            <a href="">
-                <img src="img/LOGO-CUADRADO.jpg" alt="Page Logo">
+                <img src="img/articles/1x/ultimo1.png" alt="Page Logo">
             </a>
         </div>
 	
@@ -46,18 +48,23 @@
 
         <!-- Enlaces del navbar -->
         <nav class="page-nav">
-            <ul>
-				<li><a href="#inicio">Inicio</a></li>
-                <li><a href="#tecnologia">Tecnología</a></li>
-                <li><a href="#deporte">Deporte</a></li>
-                <li><a href="#salud">Salud</a></li>
+           
+            <!-- Lista de menú -->
+            <ul class="lista-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#política">Política</a></li>
                 <li><a href="#educacion">Educación</a></li>
-                <li><a href="#espectaculos">Espectaculos</a></li>
-                <li><a href="#tendencias">Tendencias</a></li>
+                <li><a href="#internacional">Internacional</a></li>
                 <li><a href="#social">Social</a></li>
+                <li><a href="#tendencias">Tendencias</a></li>
+                <li><a href="#espectaculos">Espectaculos</a></li>
+                <li><a href="#deporte">Deporte</a></li>
+                <li><a href="#finanzas">Finanzas</a></li>
+        
             </ul>
         </nav>
-
+        
+        
 
 <script>
 	// Función para formatear la fecha y hora
@@ -89,20 +96,79 @@
 
         <!-- Botones adicionales (búsqueda, tema, etc.) -->
           
-	
-         <div class="header-right">
-			<div id="datetime"></div>
+        <div class="header-right">
+            <div id="datetime"></div>
             <div class="search">
                 <input type="checkbox" id="search-switcher" hidden>
-                <input type="search" placeholder="buscar" class="page-search-field" id="page-search-field-id">
+                <input type="search" placeholder="Buscar" class="page-search-field" id="page-search-field-id">
                 <label for="page-search-field-id" class="page-search-field-label"></label>
-                <label for="search-switcher" class="search-switcher-label"><i class="fas fa-search"></i></label>
-            </div> 
-			
-			<script> document.getElementById('page-search-field-id').addEventListener('keypress', function(e) {
-				if (e.key === 'Enter') {
-					document.querySelector('.search-switcher-label').click(); // Simula un clic en el icono de búsqueda
-					
+                <label for="search-switcher" class="search-switcher-label" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </label>
+                <div id="search-results" class="search-results"></div> <!-- Contenedor para resultados -->
+            </div>
+        </div>
+			<script> 
+            const items = [
+    { name: 'social', url: 'social.html' },
+    { name: 'privacidad', url: 'index.html' },
+    { name: 'Tema 2', url: 'pagina2.html' },
+    { name: 'Tema 3', url: 'pagina3.html' },
+    { name: 'Tema 4', url: 'pagina4.html' }
+]; // Reemplaza esto con tus datos
+
+function toggleSearch() {
+    const searchContainer = document.querySelector('.search');
+    const searchField = document.getElementById('page-search-field-id');
+    const resultsContainer = document.getElementById('search-results');
+
+    // Alternar la clase 'active' en el contenedor de búsqueda
+    searchContainer.classList.toggle('active');
+
+    // Si el campo de búsqueda está visible, enfocar en él
+    if (searchContainer.classList.contains('active')) {
+        searchField.focus();
+    } else {
+        searchField.value = ''; // Limpiar el campo si se cierra
+        resultsContainer.innerHTML = ''; // Limpiar resultados
+        resultsContainer.style.display = 'none'; // Ocultar resultados
+    }
+}
+
+document.getElementById('page-search-field-id').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpiar resultados anteriores
+    resultsContainer.style.display = 'none'; // Ocultar resultados por defecto
+
+    if (query) {
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(query));
+        
+        filteredItems.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.textContent = item.name;
+            resultItem.addEventListener('click', function() {
+                window.location.href = item.url; // Redirigir al hacer clic
+            });
+            resultsContainer.appendChild(resultItem);
+        });
+
+        if (filteredItems.length > 0) {
+            resultsContainer.style.display = 'block'; // Mostrar resultados si hay coincidencias
+        }
+    }
+});
+
+// Cerrar el campo de búsqueda si se hace clic fuera de él
+document.addEventListener('click', function(event) {
+    const searchContainer = document.querySelector('.search');
+    if (!searchContainer.contains(event.target)) {
+        searchContainer.classList.remove('active');
+        document.getElementById('page-search-field-id').value = ''; // Limpiar el campo si se cierra
+        document.getElementById('search-results').innerHTML = ''; // Limpiar resultados
+        document.getElementById('search-results').style.display = 'none'; // Ocultar resultados
+    }
+});
 	</script>   
             <div class="theme-toggle">
                 <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
@@ -139,112 +205,100 @@
         updateTheme()
     </script>
 
- 
 
 
 
-    <!-- Main container for carousel and side image -->
     <div class="main-container">
-		
         <!-- Carousel -->
-        <div class="carousel">
-            <div class="carousel-container">
-                <img src="img/noticia-1.png" alt="Image 1" sizes="(max-width: 600px) 400px,
-				(max-width: 1024px) 800px,
-				1200px" >
-				
-                <img src="img/noticia-2.png" alt="Image 2" sizes="(max-width: 600px) 400px,
-				(max-width: 1024px) 800px,
-				1200px">
-                <img src="img/Carrusel-1.png" alt="Image 3" sizes="(max-width: 600px) 400px,
-				(max-width: 1024px) 800px,
-				1200px">
-                <img src="img/Carrusel-2.webp" alt="Image 4" sizes="(max-width: 600px) 400px,
-				(max-width: 1024px) 800px,
-				1200px">
+        <div class="carrusel">
+            <span class="news-source">Destacados</span>
+            <div class="carrusel-container" id="carrusel">
+                <img src="img/noticia-1.png" alt="Image 1">
+                <img src="img/noticia-2.png" alt="Image 2" >
+                
+                <img src="img/Carrusel-2.webp" alt="Image 4" >
             </div>
         </div>
+        <script>        
+            const carruselContainer = document.querySelector('.carrusel-container');
+            const images = document.querySelectorAll('.carrusel img');
+            const totalImages = images.length;
+            let currentIndex = 0;
+            
+            function moveToNextImage() {
+                currentIndex = (currentIndex + 1) % totalImages; // Move to the next index
+                const offset = -currentIndex * 100; // Calculate the offset
+                carruselContainer.style.transform = `translateX(${offset}%)`; // Apply the transformation
+            }
+            
+            // Change image every 3 seconds (3000 ms)
+            setInterval(moveToNextImage, 3000);
+            </script>
 
 		<section class="mais-lidas">
 		    <div class="mais-lida">
-			<h3>Las más leídas</h3>
+			<h3>Lo más leído</h3>
 			<div class="mais-lida-noticia-single">
-			    <img src="img/policita.jpg">
 			    <div class="texto-mais-lida-single">
-				<h4>Natureza</h4>
-				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-				<a href="/encarar-o-surf">Ver más</a>
+				<h4>Social</h4>
+				<a href="social.html">Veto de amlo a anai fue por reparto entre pan y morena</a>
+				<div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+    
+			    </div><!-- div-texto-mais-lida-single -->
+			</div><!-- div-mais-lida-noticia-single -->
+            <div class="mais-lida-noticia-single">
+			    <div class="texto-mais-lida-single">
+				<h4>Política</h4>
+				<a href="política.html">Veto de amlo a anai fue por reparto entre pan y morena</a>
+				<div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+        
+			    </div><!-- div-texto-mais-lida-single -->
+			</div>
+			<div class="mais-lida-noticia-single">
+			   
+			    <div class="texto-mais-lida-single">
+				<h4>Salud</h4>
+				<a href="salud.html">Atención médica universal y gratuita, la desaparición del Insabi: Adán Augusto
+</a>
+                <div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+				
 			    </div><!-- div-texto-mais-lida-single -->
 			</div><!-- div-mais-lida-noticia-single -->
 			<div class="mais-lida-noticia-single">
-			    <img src="img/policita.jpg">
+			    
 			    <div class="texto-mais-lida-single">
-				<h4>Natureza</h4>
-				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-				<a href="/encarar-o-surf">Ver más</a>
-			    </div><!-- div-texto-mais-lida-single -->
-			</div><!-- div-mais-lida-noticia-single -->
-			<div class="mais-lida-noticia-single">
-			    <img src="img/policita.jpg">
-			    <div class="texto-mais-lida-single">
-				<h4>Natureza</h4>
-				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-				<a href="/encarar-o-surf">Saiba Mais</a>
-			    </div><!-- div-texto-mais-lida-single -->
-			</div><!-- div-mais-lida-noticia-single -->
-			<div class="mais-lida-noticia-single">
-			    <img src="img/policita.jpg">
-			    <div class="texto-mais-lida-single">
-				<h4>Natureza</h4>
-				<p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-				<a href="/encarar-o-surf">Ver más</a>
+				<h4>Deporte</h4>
+				<a>En San José Tenango, Puebla, inauguran canchas de basquetbol
+                </a>
+                <div class="news-meta">
+                    <span class="date">25 marzo, 2025</span>
+                    <span class="reading-time">6 Min de lectura</span>
+                </div>
+				
 			    </div><!-- div-texto-mais-lida-single -->
 			</div><!-- div-mais-lida-noticia-single -->
 		    </div><!-- div-mais-lidas -->
         </div>
 	</section>
 
-		<div class="side-image" style="order: -1;">
-            <article>
-                <div class="image-sis">
-                    <a href="https://sport-ti.mx/?srsltid=AfmBOopbxEqK7OaeYJh9eL7VpD0nzrKNHil6wtUDZUaAQ-DftksLfNU8" target="_blank">
-                        <img src="img/sporti-ti.png" alt="SPORT-TI Logo" srcset="img/sporti-ti.png 400w,
-						img/sporti-ti.png 800w,
-						img/sporti-ti.png 1200w"
-				sizes="(max-width: 600px) 400px,
-					   (max-width: 1024px) 800px,
-					   1200px"
-				alt="Imagen responsiva">
-                    </a>
-                </div>
-            </article>
-        </div>
+	
     </div>
 
-    <script>
-        
-        const carouselContainer = document.querySelector('.carousel-container');
-        const images = document.querySelectorAll('.carousel img');
-        const totalImages = images.length;
-        let currentIndex = 0;
-
-        function moveToNextImage() {
-            currentIndex = (currentIndex + 1) % totalImages; // Move to the next index
-            const offset = -currentIndex * 100; // Calculate the offset
-            carouselContainer.style.transform = `translateX(${offset}%)`; // Apply the transformation
-        }
-
-        // Change image every 3 seconds (3000 ms)
-        setInterval(moveToNextImage, 3000);
-
-        }
-    </script>
+  
 </section>
 
 		
 	</head>
-	
-	
+    
 	<div id="social-icons">
 	   
 		</a>
@@ -264,285 +318,305 @@
 	   
 	</div>
 	
-	
+    <div class="side-image" style="order: -1;">
+           
+        <div class="image-sis">
+            <a href="https://sport-ti.mx/?srsltid=AfmBOopbxEqK7OaeYJh9eL7VpD0nzrKNHil6wtUDZUaAQ-DftksLfNU8" target="_blank">
+                <img src="img/Banner-Top3.jpg" alt="SPORT-TI Logo" srcset="img/Banner-Top3.jpg 400w,
+                img/Banner-Top3.jpg 800w,
+                img/Banner-Top3.jpg 1200w"
+        sizes="(max-width: 600px) 400px,
+               (max-width: 1024px) 800px,
+               1200px"
+        alt="Imagen responsiva">
+            </a>
+        </div>
+    
+</div>
 	  
 	<article class="col-md-12">
         <!-- Modern - Bootstrap Cards -->
         <header>
+
+
+        <h2>Política</h2>
+		<section id="política"></section>
+        <div class="news-list">
+            <!-- Artículo 1 -->
+            <div class="news-item">
+                <img src="img/politica1.png" 
+                     alt="Proceso de Admisión COBAEP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | TRABAJO </span>
+                    <h3 class="news-title">Van diputados por reducir semana laboral de 48 a 40 horas la propuesta para reducir la semana laboral</h3>
+                    <p>El día de hoy se aprobó en la Comisión de Puntos Constitucionales la propuesta para reducir la semana laboral de 48 a 40 hora, esto fue considerado mediante el estado...
+
+                    </p>
+                    <a href="politica.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">7 Min de lectura</span>
+                    </div>
+                </div>
+            </div>
             
-        <!-- BLOG CARDS -->
-        
-        <div class="cards-1 section-gray">
-            <div class="container">
-                <div class="row">
-                                <div class="col-md-4">
-									<div class="card card-blog">
-										<div class="card-image">
-											<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
-											<div class="ripple-cont"></div>
-											
-										</div>
-										<div class="table">
-											<h6 class="category text-warning">
-														<i class="fa fa-soundcloud"></i> Del día
-													</h6>
-													
-											<h3 class="card-caption">
-											<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
-										</h3>
-										<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
-										</div>
-									</div>
-                            </div>
-							<div class="col-md-4">
-								<div class="card card-blog">
-									<div class="card-image">
-										<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
-										<div class="ripple-cont"></div>
-										
-									</div>
-									<div class="table">
-										<h6 class="category text-warning">
-													<i class="fa fa-soundcloud"></i> Del día
-												</h6>
-												
-										<h3 class="card-caption">
-										<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
-									</h3>
-									<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
-									</div>
-									
-								</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card card-blog">
-								<div class="card-image">
-									<a href="#"> <img class="img" src="https://mvsnoticias.com/u/fotografias/m/2025/3/10/f960x540-687577_761652_2526.jpg"> </a>
-									<div class="ripple-cont"></div>
-									
-								</div>
-								<div class="table">
-									<h6 class="category text-warning">
-												<i class="fa fa-soundcloud"></i> Del día
-											</h6>
-											
-									<h3 class="card-caption">
-									<a href="#">Noticias de última hora de México y el mundo. Entérate aquí de la información más importante sobre política, economía, policía, espectáculos y más.</a>
-								</h3>
-								<div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
-								</div>
-								
-							</div>
-					</div>
-                        </div>
+            <!-- Artículo 2 -->
+            <div class="news-item">
+                <img src="img/politica2.png" 
+                     alt="Proceso de Admisión BUAP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | DIPUTADOS</span>
+                    <h3 class="news-title">Cámara de Diputados clausura sus sesiones ordinarias del segundo año legislativo</h3>
+                    <p>Con motivo de la conclusión del segundo periodo de sesiones Ordinarias del segundo año de ejercicio de la LXV Legislatura del congreso.. </p>
+                    <a href="politica.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">6 Min de lectura</span>
                     </div>
-                   
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="news-item">
+                <img src="img/politica3.webp"
+                     alt="Juan Carlos Valdéz Zayas" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="s-category">GOBIERNO</span>
+                    <h3 class="news-title">Gobierno de Puebla y Agricultura Federal impulsan desarrollo en la mixteca</h3>
+<p>En su primer día de visita, el secretario Julio Berdegué, acompañado por el subsecretario estatal de Producción y Productividad Primaria..</p>
+                    <a href="politica.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">3 Min de lectura</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- PLAIN CARDS -->
 		<div class="section">
-        <h2>Tecnología</h2>
-		<section id="tecnologia">
-        <div class="cards-2 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
-                                <iv class="ripple-cont"></iv>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">Enero</h6>
-                                <h4 class="card-caption">
-										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
+        <h2>Educación</h2>
+		<section id="educacion">
+            <div class="news-list">
+                <!-- Artículo 1 -->
+                <div class="news-item">
+                    <img src="img/educacion.jpg" 
+                         alt="Proceso de Admisión COBAEP" 
+                         class="news-image">
+                    <div class="news-content">
+                        <span class="news-category highlight">DESTACADO | EDUCACIÓN</span>
+                        <h3 class="news-title">Titulado en la UNAM busca la disponibilidad de alimentos sanos y nutritivos a precios accesibles en el mundo</h3>
+                        <p>José Emilio Esteban Vaz, egresado de la Facultad de Medicina Veterinaria y Zootecnia de la UNAM, es uno de los personajes que puede llegar a parecer en estás... 
+                            </p>
+                        <a href="educacion.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                        <div class="news-meta">
+                            <span class="date">25 marzo, 2025</span>
+                            <span class="reading-time">7 Min de lectura</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">Febrero</h6>
-                                <h4 class="card-caption">
-										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
+                </div>
+                
+                <!-- Artículo 2 -->
+                <div class="news-item">
+                    <img src="img/educacion1.webp" 
+                         alt="Proceso de Admisión BUAP" 
+                         class="news-image">
+                    <div class="news-content">
+                        <span class="news-category highlight">DESTACADO | ESPACIO UNIVERSITARIO</span>
+                        <h3 class="news-title">¡En riesgo Proceso de Admisión BUAP 2025 por el 6% de universitarios en paro y se niegan al regreso!</h3>
+                        <p>Este 25 de marzo se entabló una mesa de diálogo dentro de las instalaciones tomadas por estudiantes en Ciudad Universitaria de la BUAP par aretomar las clases de manera presencial.. </p>
+                        <a href="educacion.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                        <div class="news-meta">
+                            <span class="date">25 marzo, 2025</span>
+                            <span class="reading-time">6 Min de lectura</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHMpAZw_vgP2Fi4umGLuwvDRMyfV_z5_U2kg&s"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-success">Marzo</h6>
-                                <h4 class="card-caption">
-										<a href="#">La tecnología es la aplicación de un conjunto de conocimientos y habilidades</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
+                </div>
+                
+                <!-- Artículo 3 -->
+                <div class="news-item">
+                    <img src="img/educacion2.webp"
+                         alt="Juan Carlos Valdéz Zayas" 
+                         class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">NACIONAL</span>
+                        <h3 class="news-title">El director general del Colegio de Bachilleres del Estado de Puebla, Alejandro Sánchez...</h3>
+                        <p>
+                            El director general del Colegio de Bachilleres del Estado de Puebla, Alejandro Sánchez, invitó a los alumnos que estén por concluir su educación..</p>
+                        <a href="educacion.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                        <div class="news-meta">
+                            <span class="date">25 marzo, 2025</span>
+                            <span class="reading-time">3 Min de lectura</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 	</section>
         <!-- BACKGROUND CARDS -->
-		<h2>Deporte</h2>
-		<section id="deporte"></section>
-        <div class="cards-6 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
-                                    <div class="card-caption"> John Smith </div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                            </div>
-                        </div>
+		<h2>Internacional</h2>
+		<section id="internacional"></section>
+        <div class="news-list">
+            <!-- Artículo 1 -->
+            <div class="news-item">
+                <img src="img/internacional1.jpg" 
+                     alt="Proceso de Admisión COBAEP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | POLÍTICA</span>
+                    <h3 class="news-title"> Funcionarios de México y EU se reúnen en la Casa Blanca para abordar el combate al fentanilo y el tráfico de armas en todo el país en conjunto con la secretaria</h3>
+                   <p>La delegación mexicana incluye a los titulares de la Secretaría de Relaciones Exteriores, Marcelo Ebrard; la secretaria de seguridad se encargaron de abodar dicho tema .. </p>
+                   <a href="internacional.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                   <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">7 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
-                                    <div class="card-caption"> More</div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                <a href="" class="btn btn-outline-primary btn-sm">Read More</a>
-
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 2 -->
+            <div class="news-item">
+                <img src="img/internacional4.png" 
+                     alt="Proceso de Admisión BUAP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">POLÍTICA | INTERNACIONAL</span>
+                    <h3 class="news-title">AMLO compara caso de Trump con el de Pedro Castillo</h3>
+                    <P>El presidente Andrés Manuel López Obrador reprobó que el exmandatario de Estados Unidos, Donal Trump, haya sido acusado formalmente de cargos penales para que esto se pueda llegar.. </P>
+                
+                    <a href="internacional.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">6 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://lahora.gt/wp-content/uploads/sites/5/2017/03/DEPO29_2-4-1.jpg">
-                                    <div class="card-caption"> More</div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                            
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="news-item">
+                <img src="img/internacional2.jpg"
+                     alt="Juan Carlos Valdéz Zayas" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category">INTERNACIONAL</span>
+                    <h3 class="news-title">Finlandia formaliza su ingreso a la OTAN</h3>
+                    <p>Finlandia se convirtió en el trigésimo primer miembro de pleno de derecho de la OTAN tras culminar el proceso de ingreso solicitado a raíz de la invasión rusa de...</p>
+                    <a href="internacional.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">3 Min de lectura</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- PROFILE CARDS 1 -->
-		<h2>Salud</h2>
-		<section id="salud"></section>
-        <div class="cards-6 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
-                                    <div class="card-caption">  More </div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                
-                            </div>
-                        </div>
+		<h2>Social</h2>
+		<section id="social"></section>
+        <div class="news-list">
+            <!-- Artículo 1 -->
+            <div class="news-item">
+                <img src="img/social.jpg" 
+                     alt="Proceso de Admisión COBAEP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | SOCIAL</span>
+                    <h3 class="news-title">Tres de cada 10 mexicanas han padecido ciberacoso: ONU</h3>
+                    <p>Tres de cada diez mexicanas que usan internet han padecido ciberacoso, lo que equivale a diez millones de mujeres, informó este miércoles la oficina de las..</p>
+                    <a href="social.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">7 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
-                                    <div class="card-caption"> More </div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 2 -->
+            <div class="news-item">
+                <img src="img/social1.jpg" 
+                     alt="Proceso de Admisión BUAP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | SOCIAL</span>
+                    <h3 class="news-title">
+                        Suman 40 migrantes muertos por incendio en Ciudad Juárez</h3>
+                        <P>El alcalde de Ciudad Juárez, Cruz Pérez Cuéllar, informó en entrevista para Latinus con Claudio Ochoa Huerta que ya suman 40 migrantes muertos tras un incendio.. </P>
+                    <a href="social.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">6 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://saludymedicina.org/wp-content/uploads/2020/04/salud-mental-no-inclusiva-la-vida-de-tres-amigos-3-compressor.jpg">
-                                    <div class="card-caption">More</div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                               
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="news-item">
+                <img src="img/social2.jpg"
+                     alt="Juan Carlos Valdéz Zayas" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category">SOCIAL</span>
+                    <h3 class="news-title">Día Mundial de la Tierra </h3>
+                    <p>El Día Mundial de la Tierra es una fecha que se celebra Organización de las Naciones Unidas declaró el 22 de abril como el Día Internacional de la Tierra, un día en el que se le da...</p>
+                    <a href="social.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">3 Min de lectura</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- PROFILE CARDS 2 -->
-		<section id="educacion"></section>
-        <h2>Educación</h2>
-        <div class="cards-6 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
-                                    <div class="card-caption"> More </div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                
-                            </div>
-                        </div>
+		<section id="tendencias"></section>
+        <h2>Tendencias</h2>
+        <div class="news-list">
+            <!-- Artículo 1 -->
+            <div class="news-item">
+                <img src="img/tendencia1.png" 
+                     alt="Proceso de Admisión COBAEP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">TENDENCIA</span>
+                    <h3 class="news-title">Tesla analiza instalar armadora cercana al AIFA: vocero de presidencia</h3>
+                    <p>El vocero de la presidencia, Jesús Ramírez, dio a conocer que el fabricante estadounidense de automóviles eléctricos Tesla analiza instalar una armador..</p>
+                    <a href="tendencia.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">7 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
-                                    <div class="card-caption">More </div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 2 -->
+            <div class="news-item">
+                <img src="img/espectaculos.png" 
+                     alt="Proceso de Admisión BUAP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | TENDENCIA</span>
+                    <h3 class="news-title">Suspenden amparo de Esquivel por tesis ante quejas de UNAM</h3>
+                    <P>
+                        Dicho juicio quedó suspendido debido a que diversidad autoridades de la Universidad presentaron recursos de queja que cuestionaban que se admitiera...</P>
+                    <a href="tendencia.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">6 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-image">
-                                <a href="#"> <img class="img" src="https://concepto.de/wp-content/uploads/2018/09/educacion-concepto-e1536242687832.jpg">
-                                    <div class="card-caption">More</div>
-                                </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <p class="card-description"> Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... </p>
-                                
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="news-item">
+                <img src="img/tendencia2.webp"
+                     alt="Juan Carlos Valdéz Zayas" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category">TENDENCIA | POLTICA</span>
+                    <h3 class="news-title">Ejecutan al abogado de la priista Tania Félix y los Vieyra</h3>
+                    <P>El abogado de los alcaldes recién detenidos de Ciudad Serdán y Tlachichuca, y de la excandidata del PRIAN Tania “N”, fue ejecutado este martes por dos...</P>
+                    <a href="tendencia.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">3 Min de lectura</span>
                     </div>
                 </div>
             </div>
@@ -550,176 +624,248 @@
         <!-- PROFILE CARDS 3 -->
 		<h2>Espectaculos</h2>
 		<section id="espectaculos"></section>
-        <div class="cards-2 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+     
+                <div class="news-list">
+                    <!-- Artículo 1 -->
+                    <div class="news-item">
+                        <img src="img/espectaculo1.jpeg" 
+                             alt="Proceso de Admisión COBAEP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">DESTACADO | ESPECTÁCULOS</span>
+                            <h3 class="news-title">Gabbo presume su nuevo “Tatu”</h3>
+                            <P>Gabbo presenta “Tatu” tema de su autoría y producción musical que ya se encuentra en plataformas digitales y con el cual busca posicionarse...</P>
+                            <a href="espectaculos.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">7 Min de lectura</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/03/hipertextual-mundo-arte-no-ocho-espectaculos-gratis-sentirte-broadway-2020725185.jpg?fit=2500%2C1666&quality=50&strip=all&ssl=1"> </a>
+                    
+                    <!-- Artículo 2 -->
+                    <div class="news-item">
+                        <img src="img/espectaculo2.jpg" 
+                             alt="Proceso de Admisión BUAP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">NACIONAL | ESPECTACULO</span>
+                            <h3 class="news-title">Espectáculos imperdibles llegan a los recintos de la OEEH este abril</h3>
+                            <P>Pachuca, Hgo.-Este mes de abril, los recintos que administra la Operadora de Eventos de Hidalgo (OEEH), ofrecen una cartelera de..</P>
+                            <a href="espectaculos.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">6 Min de lectura</span>
                             </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 3 -->
+                    <div class="news-item">
+                        <img src="img/espectaculo4.webp"
+                             alt="Juan Carlos Valdéz Zayas" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">ESPECTACULO</span>
+                            <h3 class="news-title">La banda de Seattle tendrá una única presentación hoy en el Foro Indie Rocks! de la CDMX</h3>
+                            <p>Arrancamos el mes patrio con las ganas de seguir echando gritos en todos los conciertos y festivales que quedan para este gran cierre...</p>
+                            <a href="espectaculos.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">3 Min de lectura</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                         
+                  
         <!-- PRODUCT CARDS -->
-		<h2>Tendencias</h2>
-		<section id="tendencias"></section>
-        <div class="cards-2 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
-                        </div>
+		<h2>Deporte</h2>
+		<section id="deporte"></section>    
+        <div class="news-list">
+            <!-- Artículo 1 -->
+            <div class="news-item">
+                <img src="img/deporte1.jpg" 
+                     alt="Proceso de Admisión COBAEP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DESTACADO | DEPORTE</span>
+                    <h3 class="news-title">Conmoción en el deporte: un boxeador se desplomó en el tercer round de una pelea y murió</h3>
+                    <p>El mundo del boxeo se encuentra conmocionado luego de la muerte de Gabriel Oluwasegun Olanrewaju. El pugilista nigeriano, de 31 años, se desvaneció..</p>
+                    <a href="deporte.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">7 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 2 -->
+            <div class="news-item">
+                <img src="img/deporte2.jfif" 
+                     alt="Proceso de Admisión BUAP" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category highlight">DEPORTE | SALUD</span>
+                    <h3 class="news-title">Mientras espera por volver al tenis, Jannik Sinner practicó un nuevo deporte
+                    </h3>
+                    <p>Una sanción por doping puede ser un golpe durísimo para la carrera de un tenista. Sin embargo, Jannik Sinner..</p>
+                    <a href="deporte.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">6 Min de lectura</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://media.vogue.mx/photos/64ca9f6b5a6bd4ca6393aaec/16:9/w_2560%2Cc_limit/Tendencias-de-Moda-Oton%25CC%2583o-Invierno-2023.jpg"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="news-item">
+                <img src="img/deporte3.jpg"
+                     alt="Juan Carlos Valdéz Zayas" 
+                     class="news-image">
+                <div class="news-content">
+                    <span class="news-category">DEPORTE</span>
+                    <h3 class="news-title">Que el deporte sea el motor para alcanzar sus sueños: Agustín Dorantes</h3>
+                    <p>-Con un llamado a las y los jóvenes a mantener una visión triunfadora, el Senador de la República, Agustín Dorantes Lámbarri...</p>
+                    <a href="deporte.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                    <div class="news-meta">
+                        <span class="date">25 marzo, 2025</span>
+                        <span class="reading-time">3 Min de lectura</span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- TESTIMONIAL CARDS -->
-		<h2>Social</h2>
-		<section id="social"></section>
-        <div class="cards-2 section-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-info">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
-                            </div>
-                            <div class="table">
-                                <h6 class="category text-danger">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+              
+        <!-- PRODUCT CARDS -->
+		<h2>Finanzas</h2>
+		<section id="finanzas"></section>
+                <div class="news-list">
+                    <!-- Artículo 1 -->
+                    <div class="news-item">
+                        <img src="img/finanza.png" 
+                             alt="Proceso de Admisión COBAEP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">FINANZA</span>
+                            <h3 class="news-title">Pemex recibirá más ayuda del gobierno mexicano, prevé Moody’s, La débil posición de liquidez de la petrolera mexicana Pemex </h3>
+                            <p>La débil posición de liquidez de Pemex y el descenso de los precios del crudo auguran un aumento del apoyo gubernamental en los ultimos meses ...</p>
+                            <a href="finanzas.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">7 Min de lectura</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-image">
-                                <a href="#"> <img class="img img-raised" src="https://tuvidaplena.com/wp-content/uploads/2020/06/valores-que-debes-practicar-para-mejorar-tu-entorno-social_tu-vida-plena-transformacion-humana_1200x800-1-780x470.jpg"> </a>
+                    
+                    <!-- Artículo 2 -->
+                    <div class="news-item">
+                        <img src="img/finanza2.jpg" 
+                             alt="Proceso de Admisión BUAP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">DESTACADO | FINANZA</span>
+                            <h3 class="news-title">Los pronósticos de recesión en EU para este año continúan pese a la fortaleza que ha mostrado la economía ante la inflación</h3>
+                            <p>La mayoría de los economistas en Estados Unidos vaticinan que habrá una recesión este año, pero más tarde de lo que pensaban previamente..</p>
+                            <a href="finanzas.html" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">6 Min de lectura</span>
                             </div>
-                            <div class="table">
-                                <h6 class="category text-success">More</h6>
-                                <h4 class="card-caption">
-										<a href="#">Quisque id elit maximus, pretium diam at mollis elit</a>
-									</h4>
-                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 3 -->
+                    <div class="news-item">
+                        <img src="img/finanza3.jpg"
+                             alt="Juan Carlos Valdéz Zayas" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">FINANZA</span>
+                            <h3 class="news-title">Egresada de la Anáhuac Puebla gana premio Empoderador con proyecto Finanza Rosa</h3>
+                            <p>Impulsando el desarrollo integral, la Anáhuac Puebla se enorgullece de la egresada de la Escuela de Economía y Negocios de la Anáhuac..</p>
+                            <a href="finanzas.html" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">3 Min de lectura</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-		
+                      
+ <!-- PRODUCT CARDS -->
+                 <h2>Salud</h2>
+		<section id="salud"></section>
+         
+                <div class="news-list">
+                    <!-- Artículo 1 -->
+                    <div class="news-item">
+                        <img src="img/salud1.avif" 
+                             alt="Proceso de Admisión COBAEP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">SALUD</span>
+                            <h3 class="news-title">Bolivia avanza en la validación del Manual del Aplicativo EDAN Salud V. 2.0</h3>
+                            <p>La Paz, Bolivia, 31 de marzo de 2025 (OPS)- Bolivia logra la validación y aprobación del Manual del Aplicativo EDAN Salud V. 2.0, dejándolo listo..</p>
+                            <a href="salud.html" class="btn btn-outline-danger btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">7 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 2 -->
+                    <div class="news-item">
+                        <img src="img/salud2.avif" 
+                             alt="Proceso de Admisión BUAP" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category highlight">INTERNACIONAL | SALUD</span>
+                            <h3 class="news-title">OPS emite nueva alerta epidemiológica ante el aumento de los casos de fiebre amarilla en las Américas</h3>
+                            <p>Washington, D.C., 31 de marzo de 2025 (OPS) – La Organización Panamericana de la Salud (OPS) ha emitido una nueva alerta</p>
+                            <a href="salud.html" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">6 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artículo 3 -->
+                    <div class="news-item">
+                        <img src="img/salud3.avif"
+                             alt="Juan Carlos Valdéz Zayas" 
+                             class="news-image">
+                        <div class="news-content">
+                            <span class="news-category">SALUD</span>
+                            <h3 class="news-title">México lanza la Campaña Nacional sobre la prevención del suicidio “Dale color a tu vida”</h3>
+                            <p>La Secretaría de Salud (SSA), a través de la Comisión Nacional de Salud Mental y Adicciones (CONASAMA), lanzó la Campaña Nacional de Prevención...</p>
+                            <a href="salud.html" class="btn btn-outline-primary btn-sm">Leer más</a>
+                            <div class="news-meta">
+                                <span class="date">25 marzo, 2025</span>
+                                <span class="reading-time">3 Min de lectura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
 
 
-
+              
 	  
-	<section class="dark-section mt-30">
-		<div class="wrapper">
-			<h3 class="section-heading">En caso que te lo hayas perdido</h3>
-			<div class="row">
-				<div class="col-lg-9 col-12">
-				  <article class="no-margin">
-				   <div class="image-block">
-					<img src="https://www.clarin.com/2023/11/16/axDPbgJDK_1200x0__1.jpg" alt="img-27">
+        <section class="dark-section mt-30">
+            <div class="wrapper">
+                <h3 class="section-heading">En caso que te lo hayas perdido</h3>
+                <div class="row">
+                    <div class="col-lg-9 col-12">
+                      <article class="no-margin">
+                       <div class="image-block">
+                        <img src="img/biza.jpg" alt="img-27">
 					<div class="label-block">
-						<div class="image-label">EXCLUSIVAS</div>
-						<h3 class="full-width-heading no-margin with-opacity full-width-b">
-							Bizarrap se une al reggaetonero Arcángel para lanzar su nueva colaboración tras el éxito con Sharika</h3>
+						<div class="image-label">Espectaculos</div>
+						<h3  class="full-width-heading no-margin with-opacity full-width-b"  [href]="espectaculos.html">
+                           Bizarrap se une al reggaetonero Arcángel para lanzar su nueva colaboración tras el éxito con Shakira
+							</h3>
+                            
 					</div><!--label-block-->	
 			       </div><!--image-block-->
 			      </article>
@@ -742,185 +888,155 @@
 		</div><!--wrapper-->
 	</section>
 </main>
-<footer class="page-footer">
-   <div class="wrapper">
-   	<div class="footer-top-block">
-   		<div class="footer-weather">
-   			<h4 class="location"> Cuidad de Mexico </h4>			
-   			<img src="img/icons8-clima-48.png" alt="weather" height="48">
-			 
-		
 
+
+    <div class="weather-widget">
+       
 
 
    		</div>
-	
-   	</div><!--footer-top-block-->
-	<div class="expanded-top-block">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-2 col-4">
-				  <div class="expanded-col">
-						<h3>Estados</h3>
-						<ul>
-							<li><a href="">Puebla</a></li>
-							<li><a href="">Tlaxcala</a></li>
-							<li><a href="">CDMX</a></li>
-							<li><a href="">Estado de Mexico</a></li>
-							<li><a href=""></a></li>
-							<li><a href="">Qeretaro</a></li>
-							<li><a href="">Morelos</a></li>
-							<li><a href="">Opiniones</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-4">
-					<div class="expanded-col">
-						<h3>Politica</h3>
-						<ul>
-							<li><a href="">45</a></li>
-							<li><a href="">Congresos</a></li>
-							<li><a href="">Seguridad</a></li>
-							<li><a href="">Noticia  día</li>
-							<li><a href="">Trumpmerica</a></li>
-							<li><a href="">Estado</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-4">
-					<div class="expanded-col">
-						<h3>Dinero</h3>
-						<ul>
-							<li><a href="">Negocio</a></li>
-							<li><a href="">Mercados</a></li>
-							<li><a href="">Salud</a></li>
-							<li><a href="">Lujo</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Entretenimiento</h3>
-						<ul>
-						<li><a href="">Estrellas</a></li>
-						<li><a href="">Pantalla</a></li>
-						<li><a href="">Borrachera</a></li>
-						<li><a href="">Cultura</a></li>
-						<li><a href="">Media</p></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Tecnologia</h3>
-						<ul>
-						<li><a href="">Negocio</a></li>
-						<li><a href="">Cultura</a></li>
-						<li><a href="">Artilugio</a></li>
-						<li><a href="">Futuro</a></li>
-						<li><a href="">Inauguración</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Deportes</h3>
-						<ul>
-							<li><a href="">Fútbol americano</a></li>
-							<li><a href="">Golf</a></li>
-							<li><a href="">Tennis</a></li>
-							<li><a href="">Motorsport</a></li>
-							<li><a href="">Las carreras de caballos</a></li>
-						</ul>
-					</div>
-				</div>
-			</div><!--row-->
-			<div class="row">
-				<div class="col-lg-2 col-4">
-					<div class="expanded-col">
-						<h3>Viaje</h3>
-						<ul>
-						<li><a href="">Aviación</a></li>
-						<li><a href="">Viajero de negocios</a></li>
-						<li><a href="">Destinos</a></li>
-						<li><a href="">Características</a></li>
-						<li><a href="">Comida / bebida</a></li>
-						<li><a href="">Hoteles</a></li>
-						<li><a href="">Hoteles asociados</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-4">
-					<div class="expanded-col">
-						<h3>Estilos</h3>
-						<ul>
-							<li><a href="">Moda</a></li>
-							<li><a href="">Diseño</a></li>
-							<li><a href="">Arquitectura</a></li>
-							<li><a href="">Letras</a></li>
-							<li><a href="">Autos</a></li>
-							<li><a href="">Lujo</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-4">
-					<div class="expanded-col">
-						<h3>Salud</h3>
-						<ul>
-							<li><a href="">Dieta y Fitness</a></li>
-							<li><a href="">Viviendo bien</a></li>
-							<li><a href="">Paternidad y Familia</a></li>
-							<li><a href="">Signos vitales</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Características</h3>
-						<ul>
-							<li><a href="">Proyecto Libertad</a></li>
-						    <li><a href="">Impacta tu mundo</a></li>
-							<li><a href="">Sobre Africa</a></li>
-							<li><a href="">Grados</a></li>
-							<li><a href="">Todas las características</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Video</h3>
-						<ul>
-							<li><a href="">Video nuevos</a></li>
-							<li><a href="">Muestra de características</a></li>
-							<li><a href="">Programas de televisión</a></li>
-							<li><a href="">Horario de television</a></li>
-							<li><a href="">Rostros de CNN en todo el mundo</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col">
-					<div class="expanded-col">
-						<h3>Mas...</h3>
-						<ul>
-						<li><a href="">Clima</a></li>
-						<li><a href="">Héroes</a></li>
-						<li><a href="">Perfiles</a></li>
-						<li><a href="">Liderazgo</a></li>
-						<li><a href="">Pressroom</a></li>
-						<li><a href="">Sitios asociados</a></li>
-						</ul>
-					</div>
-				</div>
-			</div><!--row-->
-		</div><!--container-fluid-->
-	</div>
-
+           <footer class="page-footer">
+            <div class="wrapper">
+                <div class="footer-top-block">
+                    <div class="footer-weather">
+                        <p class="location">Londres, Reino Unido</p>
+                        <img src="img/weather-icon.png" alt="weather" height="38">
+                        <div class="temp">16°</div>
+                    </div>
+                            
+                </div><!--footer-top-block-->
+             <div class="expanded-top-block">
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-lg-2 col-4">
+                           <div class="expanded-col">
+                                 <h3>Estados</h3>
+                                 <ul>
+                                     <li><a href="https://exclusivaspuebla.com.mx">Tlaxcala</a></li>
+                                     <li><a href="https://exclusivastlaxcala.com.mx">Puebla</a></li>
+                                     
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-4">
+                             <div class="expanded-col">
+                                 <h3>Politica</h3>
+                                 <ul>
+                                     <li><a href="">45</a></li>
+                                     <li><a href="">Congresos</a></li>
+                                     <li><a href="">Seguridad</a></li>
+                                     <li><a href="">The Nine</a></li>
+                                     <li><a href="">Trumpmerica</a></li>
+                                     <li><a href="">Estado</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-4">
+                             <div class="expanded-col">
+                                 <h3>Educación</h3>
+                                 <ul>
+                                     <li><a href="">Negocio</a></li>
+                                     <li><a href="">Mercados</a></li>
+                                     <li><a href="">Salud</a></li>
+                                     <li><a href="">Lujo</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col">
+                             <div class="expanded-col">
+                                 <h3>Entretenimiento</h3>
+                                 <ul>
+                                 <li><a href="">Estrellas</a></li>
+                                 <li><a href="">Pantalla</a></li>
+                                 <li><a href="">Borrachera</a></li>
+                                 <li><a href="">Cultura</a></li>
+                                 <li><a href="">Media</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col">
+                             <div class="expanded-col">
+                                 <h3>Tecnologia</h3>
+                                 <ul>
+                                 <li><a href="">Negocio</a></li>
+                                 <li><a href="">Cultura</a></li>
+                                 <li><a href="">Artilugio</a></li>
+                                 <li><a href="">Futuro</a></li>
+                                 <li><a href="">Inauguración</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col">
+                             <div class="expanded-col">
+                                 <h3>Deportes</h3>
+                                 <ul>
+                                     <li><a href="">Fútbol americano</a></li>
+                                     <li><a href="">Golf</a></li>
+                                     <li><a href="">Tennis</a></li>
+                                     <li><a href="">Motorsport</a></li>
+                                     <li><a href="">Las carreras de caballos</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div><!--row-->
+                     <div class="row">
+                         <div class="col-lg-2 col-4">
+                             <div class="expanded-col">
+                                 <h3>Internacional</h3>
+                                 <ul>
+                                 <li><a href="">Aviación</a></li>
+                                 <li><a href="">Viajero de negocios</a></li>
+                                 <li><a href="">Destinos</a></li>
+                                 <li><a href="">Características</a></li>
+                                 <li><a href="">Comida / bebida</a></li>
+                                 <li><a href="">Hoteles</a></li>
+                                 <li><a href="">Hoteles asociados</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-4">
+                             <div class="expanded-col">
+                                 <h3>Social</h3>
+                                 <ul>
+                                     <li><a href="">Moda</a></li>
+                                     <li><a href="">Diseño</a></li>
+                                     <li><a href="">Arquitectura</a></li>
+                                     <li><a href="">Letras</a></li>
+                                     <li><a href="">Autos</a></li>
+                                     <li><a href="">Lujo</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-4">
+                             <div class="expanded-col">
+                                 <h3>Salud</h3>
+                                 <ul>
+                                     <li><a href="">Dieta + Fitness</a></li>
+                                     <li><a href="">Viviendo bien</a></li>
+                                     <li><a href="">Paternidad + Familia</a></li>
+                                     <li><a href="">Signos vitales</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         
+                         <div class="col-lg-2 col">
+                             <div class="expanded-col">
+                                 <h3>Mas...</h3>
+                                 <ul>
+                                 <li><a href="">Clima</a></li>
+                                 <li><a href="">Sitios asociados</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div><!--row-->
+                 </div><!--container-fluid-->
+             </div><!--expanded-top-block-->
+	<div class="footer-bottom-block">
+	 <div class="footer-bottom-left">
+		
+	 </div><!--footer-bottom-left-->
 	 <div class="footer-bottom-right">
-	 	<div class="footer-copy">
-	 	  <p>Copyright © 2023 Exclusivas MX All rights reserved. Developed by www.alphapro.mx</p>
-	 	  <p>Exclusivas Sans ™ y © 2016 Cable News Network.</p>
-	 	</div>
-	
+
 	 	<div class="footer-menu">
 	 		<ul>
 	 			<li><a href="">Condiciones de uso</a></li>
@@ -930,10 +1046,14 @@
 	 			<li><a href="">Trabaja para nosotros</a></li>
 	 			<li><a href="">EXCLUSIVAS MX LA NUEVA ERA DE LA NOTICIA</a></li>
 	 		</ul>
+             <div class="footer-copy">
+                <p>Copyright © 2022 Noticias Exclusivas de Puebla All rights reserved. Developed by www.alphapro.mx</p>
+                <p>Vive la nueva era de las noticias de último momento en Puebla, México y el mundo.</p>
+              </div>
+             
 	 	</div><!--footer-menu-->
 	 </div><!--footer-bottom-right-->
    </div><!--wrapper-->
- </div>
 </footer>
 </body>
 </html>

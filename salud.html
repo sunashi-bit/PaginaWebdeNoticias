@@ -1,0 +1,247 @@
+
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/social.css">
+	<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	
+</head>
+<section id="inicio"></section>
+<div class="image-container">
+    <img id="logo" src="IMG/Logo-Withe-M-Exclusivas-MX.png" alt="Logo">
+</div>
+
+
+<!-- Navbar -->
+<header class="page-header">
+    <!-- Logo dentro del navbar (opcional) -->
+    <div class="page-logo">
+        <a href="">
+            <img src="img/articles/1x/Recurso4.png" alt="Page Logo">
+        </a>
+    </div>
+
+    
+
+    <!-- Enlaces del navbar -->
+    <nav class="page-nav">
+       
+        <!-- Lista de menú -->
+        <ul class="lista-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="politica.html">Política</a></li>
+        <li><a href="educacion.html">Educación</a></li>
+        <li><a href="internacional.html">Internacional</a></li>
+        <li><a href="social.html">Social</a></li>
+        <li><a href="tendencias.html">Tendencias</a></li>
+        <li><a href="espectaculos.html">Espectaculos</a></li>
+        <li><a href="deporte.html">Deporte</a></li>
+        </ul>
+    </nav>
+    
+    
+
+
+<script>
+// Función para formatear la fecha y hora
+function updateDateTime() {
+    const now = new Date(); // Obtiene la fecha y hora actual
+    const options = {
+        weekday: 'long', // Día de la semana (ej: "lunes")
+        year: 'numeric', // Año (ej: "2023")
+        month: 'long',   // Mes (ej: "octubre")
+        day: 'numeric',  // Día del mes (ej: "23")
+        hour: '2-digit', // Hora (ej: "09")
+        minute: '2-digit', // Minutos (ej: "45")
+        // second: '2-digit', // Segundos (ej: "30")
+        hour12: true // Formato de 12 horas (true) o 24 horas (false)
+    };
+    const formattedDateTime = now.toLocaleDateString('es-ES', options); // Formatea la fecha y hora
+    const capitalizedDateTime = formattedDateTime.charAt(0).toUpperCase() + formattedDateTime.slice(1); // Capitaliza la primera letra
+    document.getElementById('datetime').textContent = formattedDateTime; // Actualiza el contenido
+}
+
+// Actualiza la fecha y hora cada segundo
+setInterval(updateDateTime, 1000);
+
+// Inicializa la fecha y hora al cargar la página
+updateDateTime();
+</script>
+
+
+
+    <!-- Botones adicionales (búsqueda, tema, etc.) -->
+
+        <div class="theme-toggle">
+            <img id="theme-icon" src="img/icons8-sun.svg" alt="Tema claro" />
+        </div>
+    </div>
+</header>
+
+<script>
+    // Cambiar tema claro/oscuro
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    const logo = document.getElementById('logo'); // Obtén el elemento del logo
+
+    themeIcon.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        updateTheme();
+    });
+
+    function updateTheme() {
+        logo.style.opacity = 0; // Oculta la imagen
+        setTimeout(() => {
+            if (body.classList.contains('dark')) {
+                themeIcon.src = 'img/icons8-sun.svg'; // Cambia a luna
+                logo.src = 'IMG/Logo-Withe-M-Exclusivas-MX.png'; // Cambia al logo oscuro
+            } else {
+                themeIcon.src = '/img/icons8-moon-30.png'; // Cambia a sol
+                logo.src = 'IMG/Logo-black-M-Exclusivas-MX.png'; // Cambia al logo claro
+            }
+            logo.style.opacity = 1; // Muestra la imagen
+        }) 
+    }
+
+    // Inicializar el tema al cargar la página
+    updateTheme()
+</script>
+
+
+<div id="social-icons">
+	   
+</a>
+<a href="https://www.instagram.com/exclusivas_mx/" target="_blank">
+    <img src="img/instagram.png" alt="Instagram" />
+</a>
+<a href="https://www.facebook.com/periodicoexclusivasmx/" target="_blank">
+    <img src="img/facebook.png" alt="Facebook" />
+</a>
+<a href="https://www.youtube.com/@exclusivasmexico" target="_blank">
+   <img src="img/youtube.png" alt="Youtube" />
+<a href="https://x.com/exclusivas_mx" target="_blank">
+    <img src="img/letra-x.png">
+</a>
+<a href="https://www.tiktok.com/@exclusivas_mx/" target="_blank">
+   <img src="img/tik-tok.png" alt="Tiktok" />
+
+</div>
+
+
+</head>
+<body>
+
+<style>
+    /* Estilos generales */
+   
+
+    /* Card container */
+    .featured-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 30px;
+        margin-top: 180px; 
+    }
+
+    /* Header section */
+    .card-header {
+        background-color: #8B2F23; /* Color vino similar al ejemplo */
+        color: white;
+        padding: 15px 20px;
+    }
+
+    .card-header h1 {
+        font-size: 24px;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .card-tag {
+        display: inline-block;
+        background-color: #d4a017; /* Color dorado para el destacado */
+        color: #333;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-top: 8px;
+        text-transform: uppercase;
+    }
+
+    /* Content section */
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        color: #222;
+        line-height: 1.3;
+    }
+
+    .card-author {
+        font-size: 18px;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .card-meta {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .card-date {
+        margin-right: 15px;
+    }
+
+    .card-read-time {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-read-time::before {
+        content: "•";
+        margin: 0 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .card-title {
+            font-size: 22px;
+        }
+        
+        .card-author {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="featured-card">
+    <div class="card-header">
+        <h1>Lo más leído de la semana</h1>
+        <span class="card-tag">DESTACADO / GENTE EXCLUSIVA</span>
+    </div>
+    
+    <div class="card-content">
+        <h2 class="card-title">Conoce el Proceso de Admisión 2025-2026 del Cobaep: Alejandro Sánchez</h2>
+        <p class="card-author">25 marzo, 2025</p>
+        <div class="card-meta">
+            <span class="card-date">7 Min de lectura</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
